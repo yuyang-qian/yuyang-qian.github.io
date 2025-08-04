@@ -1,9 +1,18 @@
-[
-    '18:00-19:00',
-    '17:00-18:00',
-    '19:00-20:00',
-    '20:00-21:00',
-    '16:00-17:00',
-    # '21:00-22:00',
-    # '18:00-19:00',
-]
+# Choices: ["4zt", "fzz", "gulou"]
+{"qianyy-J1800"  : "4zt",  # 172.208, ubuntu.py
+ "qianyy-ubuntu" : "fzz",  # 114.200, ubuntu2.py
+ "qianyy-desktop": "4zt",  # ipv6, ubuntu2.py
+ "windows"       : "fzz",  # 114.22, main.py
+#  "qianyy-J1800"  : "gulou",  # 172.208, ubuntu.py
+#  "qianyy-ubuntu" : "gulou",  # 114.200, ubuntu2.py
+#  "qianyy-desktop": "gulou",  # ipv6, ubuntu2.py
+#  "windows"       : "gulou",  # 114.22, main.py
+ "times"         : [
+	 '18:00-19:00',
+	 '19:00-20:00',
+	 '20:00-21:00',
+	 '17:00-18:00',
+	 '16:00-17:00',
+	 # '21:00-22:00',
+	 # '18:00-19:00',
+ ]}
