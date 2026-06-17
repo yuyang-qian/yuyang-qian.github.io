@@ -5,6 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/">
+    <meta name="viewport" content="width=500">
 
     <link rel="stylesheet" href="./index_files/jemdoc.css" type="text/css">
     <title>Yu-Yang Qian @ LAMDA, NJU-AI</title>
@@ -17,6 +18,141 @@
         @font-face {
             font-family: 'LocalKaiti';
             src: url('./fonts/SubLocalSTKaiti.ttf');
+        }
+
+        /* Override jemdoc's fixed 1000px width to be responsive */
+        #layout-content {
+            width: 100%;
+            max-width: 1000px;
+            min-width: 450px;   /* 桌面端防止窗口拖得过窄 */
+            box-sizing: border-box;
+        }
+
+
+        /* Visitor map widget: fixed ~280px (≈1/5 of laptop screen), shrinks on very narrow screens */
+        .visitor-map-wrapper {
+            display: inline-block;
+            width: 280px;
+            max-width: 100%;
+        }
+
+        /* ===== Mobile-only styles ===== */
+        @media screen and (max-width: 700px) {
+            #layout-content {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            h1 {
+                font-size: 120%;
+                word-wrap: break-word;
+            }
+
+            p, li, a {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+
+            /* Convert the profile imgtable to a CSS Grid on mobile:
+               Column 1 (33vw): portrait (row 1) + logos (row 2)
+               Column 2 (rest): bio text spanning both rows            */
+            table.imgtable,
+            table.imgtable tbody {
+                display: block;
+                width: 100%;
+            }
+
+            table.imgtable tr {
+                display: grid;
+                grid-template-columns: 33vw 1fr;
+                grid-template-rows: auto auto;
+                grid-template-areas:
+                    "portrait bio"
+                    "logos    bio";
+                gap: 6px;
+                width: 100%;
+            }
+
+            table.imgtable td {
+                display: block;
+                padding: 2px;
+            }
+
+            /* td 1 — portrait */
+            table.imgtable tr td:nth-child(1) {
+                grid-area: portrait;
+                align-self: start;
+            }
+
+            table.imgtable tr td:nth-child(1) img {
+                width: 100% !important;
+                height: auto !important;
+                display: block;
+            }
+
+            /* td 2 — bio text */
+            table.imgtable tr td:nth-child(2) {
+                grid-area: bio;
+                align-self: start;
+                font-size: 13px;
+            }
+
+            /* td 3 — logos: LAMDA(上)+NJU(下) 在左列，证件照在右列跨两行 */
+            table.imgtable tr td:nth-child(3) {
+                grid-area: logos;
+                width: auto !important;
+                display: grid;
+                grid-template-columns: 1fr auto;
+                grid-template-rows: auto auto;
+                grid-template-areas:
+                    "lamda   idphoto"
+                    "nju     idphoto";
+                gap: 3px;
+                padding: 4px 0;
+                align-items: center;
+            }
+
+            /* LAMDA logo */
+            table.imgtable tr td:nth-child(3) p:nth-child(1) {
+                grid-area: lamda;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* NJU logo */
+            table.imgtable tr td:nth-child(3) p:nth-child(2) {
+                grid-area: nju;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* 证件照，跨两行 */
+            table.imgtable tr td:nth-child(3) p:nth-child(3) {
+                grid-area: idphoto;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* LAMDA / NJU 图标大小 */
+            table.imgtable tr td:nth-child(3) p:nth-child(1) img,
+            table.imgtable tr td:nth-child(3) p:nth-child(2) img {
+                max-height: 26px !important;
+                width: auto !important;
+                height: auto !important;
+            }
+
+            /* 证件照高度可以稍高一些 */
+            table.imgtable tr td:nth-child(3) p:nth-child(3) img {
+                max-height: 56px !important;
+                width: auto !important;
+                height: auto !important;
+            }
         }
     </style>
 </head>
@@ -570,19 +706,12 @@
         </ul>
 
 
-        <!-- <script type="text/javascript"
-        src="//rf.revolvermaps.com/0/0/1.js?i=5ttji34xv2e&amp;s=220&amp;m=6&amp;v=true&amp;r=false&amp;b=000000&amp;n=false&amp;c=ff0000"
-        async="async"></script> -->
-
-
         <div style="text-align: end">
-            <a href="https://clustrmaps.com/site/1bwlr" title="Visit tracker"><img
-                    src="//www.clustrmaps.com/map_v2.png?d=qn01Al3_L57n8B-NedmJtRnNAMfJwwktdIHOoP3oozs&cl=ffffff"
-                    id="tracker"></a>
+            <div class="visitor-map-wrapper">
+                <script type="text/javascript" id="mapmyvisitors"
+                    src="//mapmyvisitors.com/map.js?d=_mKM-R4qSBvW5JHAdgXVQ_HJ0HinXDe5YzuUwfa4xCA&cl=ffffff&w=a"></script>
+            </div>
         </div>
-        <!-- <script type="text/javascript" id="clustrmaps"
-        src="//cdn.clustrmaps.com/map_v2.js?d=Ih2x62v1-AGVTQ64915hrRAmT5ercFZN8cDXEK2vU3g&cl=ffffff&w=350">
-    </script> -->
 
 
         <div id="footer">
