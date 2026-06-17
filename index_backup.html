@@ -23,8 +23,8 @@
         /* Override jemdoc's fixed 1000px width to be responsive */
         #layout-content {
             width: 100%;
-            max-width: 1000px;
-            min-width: 450px;   /* 桌面端防止窗口拖得过窄 */
+            max-width: 1050px;
+            min-width: 520px;   /* 桌面端防止窗口拖得过窄 */
             box-sizing: border-box;
         }
 
@@ -34,6 +34,13 @@
             display: inline-block;
             width: 280px;
             max-width: 100%;
+        }
+
+        /* ===== Item background cards: always ===== */
+        ul.zebra-list li {
+            background-color: #f4f6f9;
+            padding: 8px 10px 8px 8px;
+            border-radius: 5px;
         }
 
         /* ===== Mobile-only styles ===== */
@@ -275,7 +282,7 @@
 
 
         <h2>Preprints</h2>
-        <ul>
+        <ul class="zebra-list">
 
             <li>
                 <p>
@@ -303,7 +310,7 @@
         </ul>
 
         <h2>Publications</h2>
-        <ul>
+        <ul class="zebra-list">
 
             <li>
                 <!-- <p>
@@ -554,8 +561,8 @@
         </ul>
 
 
-        <h2>Projects & Open-Source Codes</h2>
-        <ul>
+        <h2>Projects &amp; Open-Source Codes</h2>
+        <ul class="zebra-list">
             <li>
                 <p>
                     <b>🫧 d3LLM</b> — Ultra-Fast Diffusion LLM using Pseudo-Trajectory Distillation 🚀
