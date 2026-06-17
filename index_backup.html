@@ -712,20 +712,35 @@
             </li>
         </ul>
 
+        <hr style="border: none; border-top: 1px solid #c0c0c0; margin: 1.2em 0;">
 
-        <div style="text-align: end">
-            <div class="visitor-map-wrapper">
-                <script type="text/javascript" id="mapmyvisitors"
-                    src="//mapmyvisitors.com/map.js?d=_mKM-R4qSBvW5JHAdgXVQ_HJ0HinXDe5YzuUwfa4xCA&cl=ffffff&w=a"></script>
-            </div>
-        </div>
+        <div style="text-align: right;"><div class="visitor-map-wrapper" id="visitor-map-container" style="display: inline-block;"></div></div>
+        <script>
+        (function () {
+            var container = document.getElementById('visitor-map-container');
+            var hideTimer = setTimeout(function () {
+                container.style.display = 'none';
+            }, 3000);
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.id = 'mapmyvisitors';
+            s.src = '//mapmyvisitors.com/map.js?d=_mKM-R4qSBvW5JHAdgXVQ_HJ0HinXDe5YzuUwfa4xCA&cl=ffffff&w=a';
+            s.onload = function () { clearTimeout(hideTimer); };
+            s.onerror = function () {
+                clearTimeout(hideTimer);
+                container.style.display = 'none';
+            };
+            container.appendChild(s);
+        })();
+        </script>
 
-
-        <div id="footer">
+        <div id="footer" style="border-top: none; margin-top: 0.5em;">
             <div id="footer-text">
                 Last Modified: 2026.06.16
             </div>
         </div>
+
+
     </div>
 
 
