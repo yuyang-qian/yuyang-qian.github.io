@@ -714,7 +714,14 @@
 
         <hr style="border: none; border-top: 1px solid #c0c0c0; margin: 1.2em 0;">
 
-        <div style="text-align: right;"><div class="visitor-map-wrapper" id="visitor-map-container" style="display: inline-block;"></div></div>
+        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.4em; margin-top: 0.5em;">
+            <div id="footer" style="border-top: none;">
+                <div id="footer-text">
+                    Last Modified: 2026.06.16
+                </div>
+            </div>
+            <div class="visitor-map-wrapper" id="visitor-map-container"></div>
+        </div>
         <script>
         (function () {
             var container = document.getElementById('visitor-map-container');
@@ -733,12 +740,6 @@
             container.appendChild(s);
         })();
         </script>
-
-        <div id="footer" style="border-top: none; margin-top: 0.5em;">
-            <div id="footer-text">
-                Last Modified: 2026.06.16
-            </div>
-        </div>
 
 
     </div>
