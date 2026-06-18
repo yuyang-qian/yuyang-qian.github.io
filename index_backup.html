@@ -162,6 +162,7 @@
             }
         }
     </style>
+    <script defer src="https://events.vercount.one/js"></script>
 </head>
 
 <body>
@@ -721,6 +722,27 @@
                 </div>
             </div>
             <div class="visitor-map-wrapper" id="visitor-map-container"></div>
+            <div id="vercount-container" style="font-size: 0.8em; color: #888; text-align: right;">
+                Total Views: <span id="vercount_value_site_pv">Loading</span>
+            </div>
+            <script>
+            (function () {
+                var OFFSET = 12314;
+                var span = document.getElementById('vercount_value_site_pv');
+                var applied = false;
+                function applyOffset() {
+                    if (applied) return;
+                    var val = parseInt(span.textContent, 10);
+                    if (!isNaN(val)) {
+                        applied = true;
+                        span.textContent = val + OFFSET;
+                    }
+                }
+                var observer = new MutationObserver(applyOffset);
+                observer.observe(span, { childList: true, characterData: true, subtree: true });
+                applyOffset();
+            })();
+            </script>
         </div>
         <script>
         (function () {
