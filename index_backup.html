@@ -287,6 +287,21 @@
 
             <li>
                 <p>
+                    ✈️ JetSpec: Breaking the Scaling Ceiling of Speculative Decoding with Parallel Tree Drafting.
+                    <a href="https://arxiv.org/abs/2606.18394" target="_blank">[arXiv]</a>
+                    <a href="https://jetspec-project.github.io/jetspec-web/" target="_blank">[Blog]</a>
+                    <a href="https://github.com/hao-ai-lab/JetSpec" target="_blank">[Code]</a>
+                    <a href="https://huggingface.co/JetSpec" target="_blank">[🤗model]</a>
+                </p>
+                <p>
+                    Lanxiang Hu, Zhaoxiang Feng, Yulun Wu, Haoran Yuan, Yujie Zhao, <b><u>Yu-Yang Qian</u></b>, Bojun Wang, Peng Zhao, Daxin Jiang, Yibo Zhu, Tajana Rosing, and Hao Zhang.
+                </p>
+            </li>
+
+            <br>
+
+            <li>
+                <p>
                     Robust Length Prediction: A Perspective from Heavy-Tailed Prompt-Conditioned Distributions. </a>
                     <a href="https://arxiv.org/abs/2604.07931" target="_blank">[arXiv]</a>
                     <!-- <a href="./bib/2026-arXiv-LEAFE.html" target="_blank">[bibtex]</a> -->
@@ -356,7 +371,7 @@
                     Long-Fei Li*, <b><u>Yu-Yang Qian*</u></b>, Peng Zhao, and Zhi-Hua Zhou. (* indicates equal contribution)
                 </p> -->
                 <p>
-                    When Drafts Evolve: Speculative Decoding Meets Online Learning. </a>
+                    [OnlineSPEC] When Drafts Evolve: Speculative Decoding Meets Online Learning. </a>
                     <a href="https://arxiv.org/abs/2603.12617" target="_blank">[paper]</a>
                     <a href="https://github.com/ZinYY/OnlineSPEC" target="_blank">[code]</a>
                     <a href="./bib/2026-ICML-OnlineSPEC.html" target="_blank">[bibtex]</a>
@@ -566,16 +581,38 @@
         <ul class="zebra-list">
             <li>
                 <p>
+                    <b>✈️ JetSpec</b> — Breaking the Scaling Ceiling of Speculative Decoding with Parallel Tree Drafting
+                    <a href="https://github.com/hao-ai-lab/jetspec" target="_blank">[GitHub]</a>
+                    <a href="https://jetspec-project.github.io/jetspec-web/" target="_blank">[Blog]</a>
+                    <a href="https://huggingface.co/JetSpec" target="_blank">[🤗model]</a>
+                </p>
+                <p>
+                    We introduce <b>JetSpec</b>, a <b>lossless</b> and efficient speculative decoding method that trains a
+                    <b>causal parallel draft head</b>.
+                </p>
+                <p>
+                    <i>Key Features:</i> Sustaining <b>~1000 tok/s</b> and peaking at
+                    <b>1456 tok/s</b> on a single B200, preserving the target's output exactly. A PyTorch
+                    implementation of the paper <a href="https://arxiv.org/abs/2606.18394" target="_blank">"JetSpec:
+                    Breaking the Scaling Ceiling of Speculative Decoding with Parallel Tree Drafting"</a>.
+                </p>
+            </li>
+
+            <br>
+
+            <li>
+                <p>
                     <b>🫧 d3LLM</b> — Ultra-Fast Diffusion LLM using Pseudo-Trajectory Distillation 🚀
                     <a href="https://github.com/hao-ai-lab/d3llm" target="_blank">[GitHub]</a>
                     <a href="https://hao-ai-lab.github.io/blogs/text-diffusion/" target="_blank">[Blog]</a>
+                    <a href="https://huggingface.co/d3LLM" target="_blank">[🤗model]</a>
                 </p>
                 <p>
                     We introduce a novel recipe for building an <b>ultra-fast</b> diffusion language model named d3LLM (pseuDo-Distilled Diffusion LLM).
                 </p>
                 <p>
                     <i>Key Features:</i> up to 10× speedup over the vanilla LLaDA / Dream, and 5× speedup over AR models (Qwen-2.5-7B-it) on H100 GPU! With negligible accuracy degradation. PyTorch implementation of the paper <a
-                    href="https://arxiv.org/abs/2601.07568" target="_blank">"d3LLM: Ultra-Fast Diffusion LLM using Pseudo-Trajectory Distillation"</a>.
+                    href="https://arxiv.org/abs/2601.07568" target="_blank">d3LLM (ICML'26)</a>.
                 </p>
             </li>
 
@@ -590,7 +627,7 @@
                     This repository provides a <b>flexible and modular code framework</b> to Reinforcement Learning
                     from Human Feedback (RLHF). A PyTorch implementation of the paper <a
                         href="http://arxiv.org/abs/2502.07193" target="_blank">"Provably Efficient Online RLHF with
-                        One-Pass Reward Modeling"</a>.
+                        One-Pass Reward Modeling" (NeurIPS'25)</a>.
                 </p>
                 <p>
                     <i>Key Features:</i> You can <b>cook</b> your own Online-RLHF recipe using this repo! Customizable
@@ -627,7 +664,7 @@
                     <a href="https://github.com/ZinYY/StreamingWavelet/" target="_blank">[GitHub]</a>
                 </p>
                 <p>
-                    Sequentially apply wavelet transform to a sequence efficiently in an <b>online</b> manner, instead
+                    Applying wavelet transform to a sequence in an <b>online</b> manner, instead
                     of recalculation each round. A PyTorch implementation of the paper <a
                         href="./paper/ICML24_Wavelet.pdf" target="_blank">"Efficient Non-stationary Online Learning by
                         Wavelets with Applications to Online Distribution
@@ -718,7 +755,7 @@
         <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.4em; margin-top: 0.5em;">
             <div id="footer" style="border-top: none;">
                 <div id="footer-text">
-                    Last Modified: 2026.06.16
+                    Last Modified: 2026.06.30
                 </div>
             </div>
             <div class="visitor-map-wrapper" id="visitor-map-container"></div>
