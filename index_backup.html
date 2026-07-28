@@ -58,6 +58,38 @@
             border-radius: 5px;
         }
 
+        /* ===== Paper Logo Badge ===== */
+        ul.zebra-list li.paper-with-logo {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .paper-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .paper-logo-badge {
+            flex-shrink: 0;
+            width: 90px;
+            margin-left: 12px;
+            background: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #e8e8e8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            box-sizing: border-box;
+        }
+
+        .paper-logo-badge img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
         /* ===== Mobile-only styles ===== */
         @media screen and (max-width: 700px) {
             #layout-content {
@@ -174,6 +206,13 @@
                 max-height: 56px !important;
                 width: auto !important;
                 height: auto !important;
+            }
+
+            /* Paper logo badge: narrower on mobile */
+            .paper-logo-badge {
+                width: 60px;
+                margin-left: 8px;
+                padding: 4px;
             }
         }
     </style>
@@ -298,7 +337,8 @@
         <h2>Preprints</h2>
         <ul class="zebra-list">
 
-            <li>
+            <li class="paper-with-logo">
+                <div class="paper-content">
                 <p>
                     AdaFlash: Adaptive Speculative Decoding via On-Policy Distilled Diffusion Drafters.
                     <!-- <a href="./paper/arXiv26_AdaFlash.pdf" target="_blank">[paper]</a> -->
@@ -307,11 +347,16 @@
                 <p>
                     <b><u>Yu-Yang Qian*</u></b>, Hao-Cong Wu*, Chen Chen, Jiacheng Sun, Zhenhua Dong, Peng Zhao, and Zhi-Hua Zhou.
                 </p>
+                </div>
+                <div class="paper-logo-badge">
+                    <img src="logos/AdaFlash_Logo_LQ.jpg" alt="AdaFlash Logo">
+                </div>
             </li>
 
             <br>
 
-            <li>
+            <li class="paper-with-logo">
+                <div class="paper-content">
                 <p>
                     ✈️ JetSpec: Breaking the Scaling Ceiling of Speculative Decoding with Parallel Tree Drafting.
                     <a href="https://arxiv.org/abs/2606.18394" target="_blank">[arXiv]</a>
@@ -322,6 +367,10 @@
                 <p>
                     Lanxiang Hu, Zhaoxiang Feng, Yulun Wu, Haoran Yuan, Yujie Zhao, <b><u>Yu-Yang Qian</u></b>, Bojun Wang, Peng Zhao, Daxin Jiang, Yibo Zhu, Tajana Rosing, and Hao Zhang.
                 </p>
+                </div>
+                <div class="paper-logo-badge">
+                    <img src="logos/jetspec_logo_LQ.jpeg" alt="JetSpec Logo">
+                </div>
             </li>
 
             <br>
@@ -354,17 +403,8 @@
         <h2>Publications</h2>
         <ul class="zebra-list">
 
-            <li>
-                <!-- <p>
-                    Provably Efficient Online RLHF with One-Pass Reward Modeling. </a>
-                    <a href="http://arxiv.org/abs/2502.07193" target="_blank">[arXiv]</a>
-                    <a href="https://github.com/ZinYY/RLHF_Pipeline" target="_blank">[code]</a>
-                    <a href="./bib/2025-arXiv-RLHF.html" target="_blank">[bibtex]</a>
-                </p>
-                </p>
-                <p>
-                    Long-Fei Li*, <b><u>Yu-Yang Qian*</u></b>, Peng Zhao, and Zhi-Hua Zhou. (* indicates equal contribution)
-                </p> -->
+            <li class="paper-with-logo">
+                <div class="paper-content">
                 <p>
                     d3LLM: Ultra-Fast Diffusion LLM using Pseudo-Trajectory Distillation. </a>
                     <a href="https://arxiv.org/abs/2601.07568" target="_blank">[paper]</a>
@@ -381,11 +421,15 @@
                     Seoul, South Korea,
                     2026.
                 </p>
+                </div>
+                <div class="paper-logo-badge">
+                    <img src="logos/d3LLM_logo_LQ.jpg" alt="d3LLM Logo">
+                </div>
             </li>
 
             <br>
 
-            <li>
+            <li class="paper-with-logo">
                 <!-- <p>
                     Provably Efficient Online RLHF with One-Pass Reward Modeling. </a>
                     <a href="http://arxiv.org/abs/2502.07193" target="_blank">[arXiv]</a>
@@ -396,6 +440,7 @@
                 <p>
                     Long-Fei Li*, <b><u>Yu-Yang Qian*</u></b>, Peng Zhao, and Zhi-Hua Zhou. (* indicates equal contribution)
                 </p> -->
+                <div class="paper-content">
                 <p>
                     [OnlineSPEC] When Drafts Evolve: Speculative Decoding Meets Online Learning. </a>
                     <a href="https://arxiv.org/abs/2603.12617" target="_blank">[paper]</a>
@@ -411,6 +456,10 @@
                     Seoul, South Korea,
                     2026.
                 </p>
+                </div>
+                <div class="paper-logo-badge">
+                    <img src="logos/OnlineSPEC_Logo_LQ.jpg" alt="OnlineSPEC Logo">
+                </div>
             </li>
 
             <br>
