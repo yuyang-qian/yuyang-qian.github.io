@@ -208,22 +208,34 @@
                 height: auto !important;
             }
 
-            /* Paper logo: float layout so text wraps around */
+            /* Paper logo: grid — title beside badge, rest full-width */
             .paper-logo-wrapper {
-                display: block;
-                overflow: hidden;
+                display: grid;
+                grid-template-columns: 1fr auto;
             }
 
             .paper-content {
                 display: contents;
-                padding: 0;
             }
 
             .paper-logo-badge {
-                float: right;
-                width: 70px;
-                padding: 4px 8px;
-                margin: 0 0 4px 6px;
+                grid-column: 2;
+                grid-row: 1;
+                align-self: stretch;
+                float: none;
+                width: 80px;
+                min-height: auto;
+                padding: 5px 8px;
+                margin: 2px 0 2px 6px;
+            }
+
+            .paper-content > p:first-child {
+                grid-column: 1;
+                grid-row: 1;
+            }
+
+            .paper-content > p:not(:first-child) {
+                grid-column: 1 / -1;
             }
         }
     </style>
