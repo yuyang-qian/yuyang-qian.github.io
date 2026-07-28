@@ -60,6 +60,11 @@
 
         /* ===== Paper Logo Badge ===== */
         ul.zebra-list li.paper-with-logo {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .paper-logo-wrapper {
             display: flex;
             align-items: stretch;
         }
@@ -67,19 +72,20 @@
         .paper-content {
             flex: 1;
             min-width: 0;
+            order: -1;
+            padding: 8px 0;
         }
 
         .paper-logo-badge {
             flex-shrink: 0;
-            width: 90px;
-            margin-left: 12px;
+            width: 120px;
             background: #ffffff;
             border-radius: 8px;
-            border: 1px solid #e8e8e8;
+            box-shadow: 0 0 12px 5px rgba(255, 255, 255, 0.75);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 6px;
+            padding: 6px 12px;
             box-sizing: border-box;
         }
 
@@ -87,7 +93,6 @@
             width: 100%;
             height: auto;
             object-fit: contain;
-            border-radius: 4px;
         }
 
         /* ===== Mobile-only styles ===== */
@@ -208,11 +213,22 @@
                 height: auto !important;
             }
 
-            /* Paper logo badge: narrower on mobile */
+            /* Paper logo: float layout so text wraps around */
+            .paper-logo-wrapper {
+                display: block;
+                overflow: hidden;
+            }
+
+            .paper-content {
+                display: contents;
+                padding: 0;
+            }
+
             .paper-logo-badge {
-                width: 60px;
-                margin-left: 8px;
-                padding: 4px;
+                float: right;
+                width: 70px;
+                padding: 4px 8px;
+                margin: 0 0 4px 6px;
             }
         }
     </style>
@@ -338,6 +354,10 @@
         <ul class="zebra-list">
 
             <li class="paper-with-logo">
+                <div class="paper-logo-wrapper">
+                <div class="paper-logo-badge">
+                    <img src="logos/AdaFlash_Vertical_Logo_LQ.jpg" alt="AdaFlash Logo">
+                </div>
                 <div class="paper-content">
                 <p>
                     AdaFlash: Adaptive Speculative Decoding via On-Policy Distilled Diffusion Drafters.
@@ -348,19 +368,21 @@
                     <b><u>Yu-Yang Qian*</u></b>, Hao-Cong Wu*, Chen Chen, Jiacheng Sun, Zhenhua Dong, Peng Zhao, and Zhi-Hua Zhou.
                 </p>
                 </div>
-                <div class="paper-logo-badge">
-                    <img src="logos/AdaFlash_Logo_LQ.jpg" alt="AdaFlash Logo">
                 </div>
             </li>
 
             <br>
 
             <li class="paper-with-logo">
+                <div class="paper-logo-wrapper">
+                <div class="paper-logo-badge">
+                    <img src="logos/jetspec_logo_LQ.jpeg" alt="JetSpec Logo">
+                </div>
                 <div class="paper-content">
                 <p>
                     ✈️ JetSpec: Breaking the Scaling Ceiling of Speculative Decoding with Parallel Tree Drafting.
                     <a href="https://arxiv.org/abs/2606.18394" target="_blank">[arXiv]</a>
-                    <a href="https://jetspec-project.github.io/jetspec-web/" target="_blank">[blog]</a>
+                    <!-- <a href="https://jetspec-project.github.io/jetspec-web/" target="_blank">[blog]</a> -->
                     <a href="https://github.com/hao-ai-lab/JetSpec" target="_blank">[code]</a>
                     <a href="https://huggingface.co/JetSpec" target="_blank">[🤗model]</a>
                 </p>
@@ -368,8 +390,6 @@
                     Lanxiang Hu, Zhaoxiang Feng, Yulun Wu, Haoran Yuan, Yujie Zhao, <b><u>Yu-Yang Qian</u></b>, Bojun Wang, Peng Zhao, Daxin Jiang, Yibo Zhu, Tajana Rosing, and Hao Zhang.
                 </p>
                 </div>
-                <div class="paper-logo-badge">
-                    <img src="logos/jetspec_logo_LQ.jpeg" alt="JetSpec Logo">
                 </div>
             </li>
 
@@ -404,13 +424,17 @@
         <ul class="zebra-list">
 
             <li class="paper-with-logo">
+                <div class="paper-logo-wrapper">
+                <div class="paper-logo-badge">
+                    <img src="logos/d3LLM_logo_LQ.jpg" alt="d3LLM Logo">
+                </div>
                 <div class="paper-content">
                 <p>
                     d3LLM: Ultra-Fast Diffusion LLM using Pseudo-Trajectory Distillation. </a>
                     <a href="https://arxiv.org/abs/2601.07568" target="_blank">[paper]</a>
                     <a href="https://github.com/hao-ai-lab/d3LLM" target="_blank">[code]</a>
                     <a href="https://huggingface.co/d3LLM" target="_blank">[🤗model]</a>
-                    <a href="https://huggingface.co/spaces/d3LLM/dLLM_Leaderboard" target="_blank">[leaderboard]</a>
+                    <!-- <a href="https://huggingface.co/spaces/d3LLM/dLLM_Leaderboard" target="_blank">[leaderboard]</a> -->
                     <a href="./bib/2026-ICML-d3LLM.html" target="_blank">[bibtex]</a>
                 </p>
                 <p>
@@ -422,8 +446,6 @@
                     2026.
                 </p>
                 </div>
-                <div class="paper-logo-badge">
-                    <img src="logos/d3LLM_logo_LQ.jpg" alt="d3LLM Logo">
                 </div>
             </li>
 
@@ -440,6 +462,10 @@
                 <p>
                     Long-Fei Li*, <b><u>Yu-Yang Qian*</u></b>, Peng Zhao, and Zhi-Hua Zhou. (* indicates equal contribution)
                 </p> -->
+                <div class="paper-logo-wrapper">
+                <div class="paper-logo-badge">
+                    <img src="logos/OnlineSPEC_Logo_LQ.jpg" alt="OnlineSPEC Logo">
+                </div>
                 <div class="paper-content">
                 <p>
                     [OnlineSPEC] When Drafts Evolve: Speculative Decoding Meets Online Learning. </a>
@@ -457,8 +483,6 @@
                     2026.
                 </p>
                 </div>
-                <div class="paper-logo-badge">
-                    <img src="logos/OnlineSPEC_Logo_LQ.jpg" alt="OnlineSPEC Logo">
                 </div>
             </li>
 
