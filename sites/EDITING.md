@@ -48,7 +48,7 @@ python3 scripts/build_profile.py --site-only
 
 省略 `logo` 或写 `"logo": null`，都只显示文字，不补默认图标、不留图标占位。`id` 在所有学校和项目中须唯一，仅使用小写字母、数字、`-`、`_`；它**无需与图片文件名一致**。
 
-主页有对应论文时，在项目中添加 `"paper_anchor": "paper-my-project"`，并为 `../index_backup.html` 中对应的论文 `<li>` 设置 `id="paper-my-project" tabindex="-1"`。动态卡片中的项目名称及 Logo 会平滑滚动到该条目，滚动结束后目标背景播放一次 1.6 秒的`#f6f7fa → #d4e0f0 → #f6f7fa` 渐变，不显示描边，重复点击会重新播放；省略此字段时直接使用 `url`，例如 PD Survey。独立打开动态页面时，论文链接也会进入 `index_backup.html` 的对应位置。README 继续使用 `url`。TreeLoRA 排在 RLHF & RSI 的 OnlineRLHF 后面。
+主页有对应论文时，在项目中添加 `"paper_anchor": "paper-my-project"`，并为 `../index_backup.html` 中对应的论文 `<li>` 设置 `id="paper-my-project" tabindex="-1"`。动态卡片中的项目名称及 Logo 会平滑滚动到该条目，滚动结束后目标背景播放一次 1.6 秒的`#f6f7fa → #d4e0f0 → #f6f7fa` 渐变，不显示描边，重复点击会重新播放；省略此字段时直接使用 `url`，例如 PD Survey。独立打开动态页面时，论文链接也会进入 `index_backup.html` 的对应位置。刷新主页时会清除地址栏中的 `#paper-…` 后缀；首次打开带论文锚点的链接仍可正常定位。README 继续使用 `url`。TreeLoRA 排在 RLHF & RSI 的 OnlineRLHF 后面。
 
 如果项目链接到主页中的独立 HTML 页面，可设置 `"paper_page": "bib/to-appear.html"`（路径相对主页仓库根目录）。动态卡片的名称和 Logo 会使用该本地页面，README 仍使用 `url` 中的完整地址。d3LLM-v2 排在 Diffusion LLMs 的 d3LLM 后面，使用 `assets/logos/d3LLM-v2.jpg` 并链接到此待发表页面。
 

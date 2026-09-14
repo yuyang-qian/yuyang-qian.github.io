@@ -7,6 +7,16 @@
     <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <script>
+    (function () {
+        var navigation = performance.getEntriesByType('navigation')[0];
+        if (navigation && navigation.type === 'reload' && /^#paper-[a-z0-9_-]+$/.test(window.location.hash)) {
+            // Clear a paper jump on refresh while preserving shared paper links on first visit.
+            history.replaceState(history.state, '', window.location.href.split('#')[0]);
+        }
+    })();
+    </script>
+
     <link rel="stylesheet" href="./index_files/jemdoc.css" type="text/css">
     <title>Yu-Yang Qian @ LAMDA, NJU-AI</title>
     <style>
