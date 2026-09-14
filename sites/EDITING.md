@@ -50,6 +50,8 @@ python3 scripts/build_profile.py --site-only
 
 主页有对应论文时，在项目中添加 `"paper_anchor": "paper-my-project"`，并为 `../index_backup.html` 中对应的论文 `<li>` 设置 `id="paper-my-project" tabindex="-1"`。动态卡片中的项目名称及 Logo 会平滑滚动到该条目，滚动结束后目标背景播放一次 1.6 秒的`#f6f7fa → #d4e0f0 → #f6f7fa` 渐变，不显示描边，重复点击会重新播放；省略此字段时直接使用 `url`，例如 PD Survey。独立打开动态页面时，论文链接也会进入 `index_backup.html` 的对应位置。README 继续使用 `url`。TreeLoRA 排在 RLHF & RSI 的 OnlineRLHF 后面。
 
+如果项目链接到主页中的独立 HTML 页面，可设置 `"paper_page": "bib/to-appear.html"`（路径相对主页仓库根目录）。动态卡片的名称和 Logo 会使用该本地页面，README 仍使用 `url` 中的完整地址。d3LLM-v2 排在 Diffusion LLMs 的 d3LLM 后面，使用 `assets/logos/d3LLM-v2.jpg` 并链接到此待发表页面。
+
 项目名称默认保持单行。需要主动换行时，可额外指定 `name_lines`：
 
 ```json

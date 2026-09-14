@@ -99,6 +99,13 @@
           "url": "https://github.com/hao-ai-lab/d3LLM",
           "description": "Ultra-fast diffusion LLMs via pseudo-trajectory distillation.",
           "logo": "assets/logos/transparent/d3llm.png"
+        },
+        {
+          "id": "d3llm-v2",
+          "name": "d3LLM-v2",
+          "url": "https://www.lamda.nju.edu.cn/qianyy/bib/to-appear.html",
+          "paper_page": "bib/to-appear.html",
+          "logo": "assets/logos/d3LLM-v2.jpg"
         }
       ]
     },

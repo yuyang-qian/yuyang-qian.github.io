@@ -119,6 +119,12 @@ def load_profile(path, root):
             raise ValueError(f'{where}.projects: expected a list')
         for j, project in enumerate(group['projects']):
             item(project, f'{where}.projects[{j}]', 'name')
+            if 'paper_page' in project:
+                page = Path(require_text(project['paper_page'], f'{where}.projects[{j}].paper_page'))
+                if page.is_absolute() or '..' in page.parts or page.suffix != '.html':
+                    raise ValueError(f'{where}.projects[{j}].paper_page: expected an HTML path relative to the homepage repository')
+                if not (root.parent / page).is_file():
+                    raise ValueError(f'{where}.projects[{j}].paper_page: page does not exist: {page}')
             if 'paper_anchor' in project:
                 anchor = require_text(project['paper_anchor'], f'{where}.projects[{j}].paper_anchor')
                 if not re.fullmatch(r'paper-[a-z0-9][a-z0-9_-]*', anchor):
