@@ -116,5 +116,10 @@ h2 { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.45; }
   }
 }
 @media (max-width: 700px) {
-  .embedded { --page-gutter: 10px; --card-inset: 6px; }
+  .embedded {
+    --page-gutter: 10px;
+    --card-inset: var(--page-gutter);
+    /* Move the border inward while keeping the content in place. */
+    --card-padding: 4px;
+  }
 }
