@@ -72,15 +72,15 @@ class ProfileBuildTests(unittest.TestCase):
         first = build(profile, self.output)
         self.assertEqual(first, build(profile, self.output))
         document = (self.output / 'README.md').read_text()
-        self.assertIn('<strong>efficiency</strong>', document)
-        self.assertIn('<strong>infra</strong>', document)
+        self.assertIn('<strong>Efficiency</strong>', document)
+        self.assertIn('<strong>Infra</strong>', document)
         self.assertNotIn('<canvas', document)
         self.assertNotIn('keyword-letter', document)
         site = (self.output / 'site/index.html').read_text()
         self.assertIn('<canvas id="wave-grid"', site)
         self.assertIn('class="keyword-letter"', site)
-        self.assertIn('class="sr-only">efficiency</span>', site)
-        self.assertIn('class="sr-only">infra</span>', site)
+        self.assertIn('class="sr-only">Efficiency</span>', site)
+        self.assertIn('class="sr-only">Infra</span>', site)
         self.assertIn('<h1 id="intro-title">', site)
         self.assertNotIn('<footer', site)
         self.assertNotIn('<button', site)
@@ -127,6 +127,7 @@ class ProfileBuildTests(unittest.TestCase):
             ('id', 'nju', 'groups[0].projects[0].id: duplicate id'),
             ('logo', 'assets/logos/not-here.png', 'groups[0].projects[0].logo.src: image does not exist'),
             ('name_lines', ['Incorrect', 'Name'], 'groups[0].projects[0].name_lines: lines joined with spaces must match name'),
+            ('paper_anchor', '../invalid', 'groups[0].projects[0].paper_anchor: expected paper-'),
         ]
         original = self.data['groups'][0]['projects'][0].copy()
         for field, value, message in cases:

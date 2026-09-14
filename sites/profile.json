@@ -2,11 +2,11 @@
   "name": "Yu-Yang Qian",
   "handle": "ZinYY",
   "homepage": "https://www.lamda.nju.edu.cn/qianyy/",
-  "tagline": "Efficiency & infra of LLMs.",
-  "intro": "I'm interested in the efficiency and infra of LLMs.",
+  "tagline": "Efficiency & Infra of LLMs.",
+  "intro": "I'm interested in the Efficiency and Infra of LLMs.",
   "intro_highlights": [
-    "efficiency",
-    "infra"
+    "Efficiency",
+    "Infra"
   ],
   "affiliations": [
     {
@@ -58,6 +58,7 @@
       "projects": [
         {
           "id": "onlinespec",
+          "paper_anchor": "paper-onlinespec",
           "name": "OnlineSPEC",
           "url": "https://github.com/ZinYY/OnlineSPEC",
           "description": "Speculative decoding meets online learning.",
@@ -65,6 +66,7 @@
         },
         {
           "id": "adaflash",
+          "paper_anchor": "paper-adaflash",
           "name": "AdaFlash",
           "url": "https://github.com/ZinYY/AdaFlash",
           "description": "On-policy distilled diffusion drafters.",
@@ -72,6 +74,7 @@
         },
         {
           "id": "jetspec",
+          "paper_anchor": "paper-jetspec",
           "name": "JetSpec",
           "url": "https://github.com/hao-ai-lab/JetSpec",
           "description": "Scaling speculative decoding with parallel tree drafting.",
@@ -91,6 +94,7 @@
       "projects": [
         {
           "id": "d3llm",
+          "paper_anchor": "paper-d3llm",
           "name": "d3LLM",
           "url": "https://github.com/hao-ai-lab/d3LLM",
           "description": "Ultra-fast diffusion LLMs via pseudo-trajectory distillation.",
@@ -103,13 +107,23 @@
       "projects": [
         {
           "id": "online-rlhf",
+          "paper_anchor": "paper-online-rlhf",
           "name": "OnlineRLHF",
           "url": "https://github.com/ZinYY/Online_RLHF",
           "description": "Online RLHF with one-pass reward modeling.",
           "logo": null
         },
         {
+          "id": "treelora",
+          "paper_anchor": "paper-treelora",
+          "name": "TreeLoRA",
+          "url": "https://github.com/ZinYY/TreeLoRA",
+          "description": "Efficient continual learning via layer-wise LoRAs guided by a hierarchical gradient-similarity tree.",
+          "logo": null
+        },
+        {
           "id": "counterfactual",
+          "paper_anchor": "paper-counterfactual",
           "name": "Counterfactual Distillation",
           "url": "https://arxiv.org/abs/2603.16843",
           "description": "Internalizing agency from reflective experience.",

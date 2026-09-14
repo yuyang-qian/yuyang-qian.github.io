@@ -119,6 +119,10 @@ def load_profile(path, root):
             raise ValueError(f'{where}.projects: expected a list')
         for j, project in enumerate(group['projects']):
             item(project, f'{where}.projects[{j}]', 'name')
+            if 'paper_anchor' in project:
+                anchor = require_text(project['paper_anchor'], f'{where}.projects[{j}].paper_anchor')
+                if not re.fullmatch(r'paper-[a-z0-9][a-z0-9_-]*', anchor):
+                    raise ValueError(f'{where}.projects[{j}].paper_anchor: expected paper- followed by lowercase letters, digits, hyphens, or underscores')
     for i, link in enumerate(data['links']):
         if not isinstance(link, dict):
             raise ValueError(f'links[{i}]: expected an object')

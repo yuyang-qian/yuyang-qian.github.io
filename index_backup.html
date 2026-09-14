@@ -66,6 +66,15 @@
             border-radius: 5px;
         }
 
+        li[id^="paper-"] {
+            scroll-margin-top: 16px;
+        }
+
+        li[id^="paper-"]:target {
+            outline: 2px solid #d8e2f0;
+            outline-offset: 4px;
+        }
+
         /* ===== Paper Logo Badge ===== */
         .paper-logo-wrapper {
             display: flex;
@@ -326,8 +335,19 @@
         (function () {
             var frame = document.getElementById('research-profile');
             window.addEventListener('message', function (event) {
-                if (event.source !== frame.contentWindow || !event.data ||
-                    event.data.type !== 'research-profile-height') return;
+                if (event.source !== frame.contentWindow || !event.data) return;
+                if (event.data.type === 'research-profile-navigate') {
+                    var anchor = event.data.anchor;
+                    if (typeof anchor !== 'string' || !/^paper-[a-z0-9_-]+$/.test(anchor)) return;
+                    var paper = document.getElementById(anchor);
+                    if (paper) {
+                        window.location.hash = anchor;
+                        paper.scrollIntoView({ block: 'start' });
+                        paper.focus({ preventScroll: true });
+                    }
+                    return;
+                }
+                if (event.data.type !== 'research-profile-height') return;
                 var height = event.data.height;
                 if (typeof height === 'number' && Number.isFinite(height) && height > 0) {
                     frame.style.height = Math.ceil(height) + 'px';
@@ -366,7 +386,7 @@
         <h2>Preprints</h2>
         <ul class="zebra-list">
 
-            <li class="paper-with-logo">
+            <li class="paper-with-logo" id="paper-jetspec" tabindex="-1">
                 <div class="paper-logo-wrapper">
                 <a class="paper-logo-badge" href="https://github.com/hao-ai-lab/JetSpec" target="_blank">
                     <img src="logos/jetspec_logo_LQ.jpeg" alt="JetSpec Logo">
@@ -407,7 +427,7 @@
 
             <br>
 
-            <li>
+            <li id="paper-counterfactual" tabindex="-1">
                 <p>
                     Internalizing Agency from Reflective Experience. </a>
                     <a href="https://arxiv.org/abs/2603.16843" target="_blank">[arXiv]</a>
@@ -426,7 +446,7 @@
         <ul class="zebra-list">
 
 
-            <li class="paper-with-logo">
+            <li class="paper-with-logo" id="paper-adaflash" tabindex="-1">
                 <div class="paper-logo-wrapper">
                 <a class="paper-logo-badge" href="https://github.com/ZinYY/AdaFlash" target="_blank">
                     <img src="logos/AdaFlash_Vertical_Logo_LQ.jpg" alt="AdaFlash Logo">
@@ -454,7 +474,7 @@
 
             <br>
 
-            <li class="paper-with-logo">
+            <li class="paper-with-logo" id="paper-d3llm" tabindex="-1">
                 <div class="paper-logo-wrapper">
                 <a class="paper-logo-badge" href="https://github.com/hao-ai-lab/d3LLM" target="_blank">
                     <img src="logos/d3LLM_logo_LQ.jpeg" alt="d3LLM Logo">
@@ -482,7 +502,7 @@
 
             <br>
 
-            <li class="paper-with-logo">
+            <li class="paper-with-logo" id="paper-onlinespec" tabindex="-1">
                 <!-- <p>
                     Provably Efficient Online RLHF with One-Pass Reward Modeling. </a>
                     <a href="http://arxiv.org/abs/2502.07193" target="_blank">[arXiv]</a>
@@ -519,7 +539,7 @@
 
             <br>
 
-            <li>
+            <li id="paper-online-rlhf" tabindex="-1">
                 <p>
                     <!-- Provably Efficient RLHF Pipeline: A Unified View from Contextual Bandits. </a> -->
                     Provably Efficient Online RLHF with One-Pass Reward Modeling. </a>
@@ -561,7 +581,7 @@
 
             <br>
 
-            <li>
+            <li id="paper-treelora" tabindex="-1">
                 <p>
                     TreeLoRA: Efficient Continual Learning via Layer-Wise LoRAs Guided by a Hierarchical
                     Gradient-Similarity Tree. </a>

@@ -9,11 +9,22 @@
     // Fit the card into the host page, including when previewing local HTML files.
     document.body.style.padding = '0';
     card.style.width = '100%';
+    const parentOrigin = window.location.protocol === 'file:' ? '*' : window.location.origin;
     document.querySelectorAll('a[href]:not([href^="#"])').forEach(link => {
+      if (link.dataset.paperAnchor) {
+        link.addEventListener('click', event => {
+          if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+          event.preventDefault();
+          window.parent.postMessage({
+            type: 'research-profile-navigate',
+            anchor: link.dataset.paperAnchor
+          }, parentOrigin);
+        });
+        return;
+      }
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
     });
-    const parentOrigin = window.location.protocol === 'file:' ? '*' : window.location.origin;
     const reportHeight = () => window.parent.postMessage({
       type: 'research-profile-height',
       height: Math.ceil(card.getBoundingClientRect().height)

@@ -36,7 +36,7 @@ def project_name(project):
 def affiliation_markup(item):
     icon = logo_picture(item)
     link = f'<a href="{escape(item["url"], quote=True)}">{escape(item["label"])}</a>'
-    logo = f'<span class="school-logo">{icon}</span>' if icon else ''
+    logo = f'<span class="school-logo" style="--logo-height:{item["logo"]["height"] / 16:g}em">{icon}</span>' if icon else ''
     return f'<span class="affiliation">{logo}<span class="affiliation-text">{link}</span></span>'
 
 
@@ -112,9 +112,12 @@ def page(profile):
             logo = f'<span class="project-logo">{icon}</span>' if icon else ''
             title = f' title="{escape(project["description"], quote=True)}"' if project.get('description') else ''
             label = f' aria-label="{escape(project["name"], quote=True)}"' if project.get('name_lines') else ''
+            anchor = project.get('paper_anchor')
+            href = f'../../index_backup.html#{anchor}' if anchor else project['url']
+            navigation = f' data-paper-anchor="{anchor}" target="_parent"' if anchor else ''
             # Keep each separator with the preceding project when the list wraps.
             separator = '<span class="project-separator" aria-hidden="true">·</span>' if project_index < len(group['projects']) - 1 else ''
-            projects.append(f'<span class="project-entry"><a class="project" href="{escape(project["url"], quote=True)}"{title}{label}><span>{project_name(project)}</span>{logo}</a>{separator}</span>')
+            projects.append(f'<span class="project-entry"><a class="project" href="{escape(href, quote=True)}"{navigation}{title}{label}><span>{project_name(project)}</span>{logo}</a>{separator}</span>')
         groups.append(f'''<section class="research-group" aria-labelledby="group-{i}">
           <h2 id="group-{i}"><span class="group-bullet" aria-hidden="true">·</span>{escape(group['name'])}</h2>
           <div class="projects">{''.join(projects)}</div>
