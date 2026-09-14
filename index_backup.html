@@ -37,6 +37,7 @@
 
         /* Override jemdoc's fixed 1000px width to be responsive */
         #layout-content {
+            --page-gutter: 16px;
             width: 100%;
             max-width: 1050px;
             min-width: 520px;   /* 桌面端防止窗口拖得过窄 */
@@ -45,12 +46,16 @@
 
         .research-profile {
             display: block;
-            width: 100%;
+            width: calc(100% + 2 * var(--page-gutter));
             height: 640px;
             margin: 1.4em 0;
+            margin-left: calc(-1 * var(--page-gutter));
             border: 0;
         }
 
+        .supervisor-description {
+            margin-left: 24px;
+        }
 
         /* Visitor map widget: fixed ~280px (≈1/5 of laptop screen), shrinks on very narrow screens */
         .visitor-map-wrapper {
@@ -120,6 +125,8 @@
         /* ===== Mobile-only styles ===== */
         @media screen and (max-width: 700px) {
             #layout-content {
+                --page-gutter: 10px;
+                min-width: 0;
                 padding-left: 10px;
                 padding-right: 10px;
             }
@@ -399,7 +406,7 @@
 
 
         <h2>Supervisor</h2>
-        <p> &nbsp; &nbsp;&nbsp;&nbsp; Professor <a href="https://cs.nju.edu.cn/zhouzh/" target="_blank"> Zhi-Hua
+        <p class="supervisor-description">Professor <a href="https://cs.nju.edu.cn/zhouzh/" target="_blank"> Zhi-Hua
         Zhou</a> <br></p>
 
 
@@ -972,7 +979,7 @@
         </ul>
 
 
-        <h2>Biography</h2>
+        <!-- <h2>Biography</h2>
         <ul>
             <li>
                 <p><b>Sep 2016 - Jun 2020</b> : Receive my B.Sc. degree in <a href="http://www.sice.uestc.edu.cn/"
@@ -993,8 +1000,6 @@
                         target="_blank">Nanjing University</a> and a member of <a href="http://www.lamda.nju.edu.cn/"
                         target="_blank">LAMDA</a> Group, where I was very fortunate to be advised by Prof. <a
                         href="https://cs.nju.edu.cn/zhouzh/" target="_blank"> Zhi-Hua Zhou</a>.</p>
-                        <!--  and Prof. <a
-                        href="http://www.lamda.nju.edu.cn/jiangy/" target="_blank"> Yuan Jiang</a> -->
             </li>
         </ul>
 
@@ -1018,10 +1023,9 @@
                     603,
                     163
                     Xianlin Avenue, Qixia District, Nanjing 210023, China<br>
-                    <!-- (南京市栖霞区仙林大道163号, 南京大学仙林校区603信箱, 软件新技术国家重点实验室, 210023.) -->
                 </p>
             </li>
-        </ul>
+        </ul> -->
 
         <hr style="border: none; border-top: 1px solid #c0c0c0; margin: 1.2em 0;">
 

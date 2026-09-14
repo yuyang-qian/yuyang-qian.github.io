@@ -95,9 +95,8 @@ def animated_intro(profile):
     pieces = re.split(pattern, profile['intro'])
     def keyword(word):
         letters = ''.join(f'<span class="keyword-letter" style="--letter-index:{i}">{escape(letter).replace(" ", "&#160;")}</span>' for i, letter in enumerate(word))
-        # Screen readers get a complete word, while the decorative letters can
-        # animate independently without being announced one character at a time.
-        return f'<em><span class="sr-only">{escape(word)}</span><span class="keyword-letters" aria-hidden="true">{letters}</span></em>'
+        # Keep a single text copy for selection and assistive technology.
+        return f'<em><span class="keyword-letters">{letters}</span></em>'
     return ''.join(keyword(piece) if piece in highlights else escape(piece) for piece in pieces)
 
 
@@ -118,10 +117,12 @@ def page(profile):
             # Keep each separator with the preceding project when the list wraps.
             separator = '<span class="project-separator" aria-hidden="true">·</span>' if project_index < len(group['projects']) - 1 else ''
             projects.append(f'<span class="project-entry"><a class="project" href="{escape(href, quote=True)}"{navigation}{title}{label}><span>{project_name(project)}</span>{logo}</a>{separator}</span>')
-        groups.append(f'''<section class="research-group" aria-labelledby="group-{i}">
-          <h2 id="group-{i}"><span class="group-bullet" aria-hidden="true">·</span>{escape(group['name'])}</h2>
-          <div class="projects">{''.join(projects)}</div>
-        </section>''')
+        groups.append(f'''<li class="research-group">
+          <div class="research-row">
+            <h2 id="group-{i}">{escape(group['name'])}</h2>
+            <div class="projects">{''.join(projects)}</div>
+          </div>
+        </li>''')
     template = (ROOT / 'site' / 'index.template.html').read_text(encoding='utf-8')
     values = {
         'NAME': escape(profile['name']),

@@ -1,6 +1,7 @@
 """Integration checks for adding content without changing the renderer."""
 
 import json
+import re
 import sys
 import tempfile
 import unittest
@@ -79,8 +80,8 @@ class ProfileBuildTests(unittest.TestCase):
         site = (self.output / 'site/index.html').read_text()
         self.assertIn('<canvas id="wave-grid"', site)
         self.assertIn('class="keyword-letter"', site)
-        self.assertIn('class="sr-only">Efficiency</span>', site)
-        self.assertIn('class="sr-only">Infra</span>', site)
+        intro = re.search(r'<p class="intro">.*?</p>', site).group()
+        self.assertEqual(''.join(ET.fromstring(intro).itertext()), profile['intro'])
         self.assertIn('<h1 id="intro-title">', site)
         self.assertNotIn('<footer', site)
         self.assertNotIn('<button', site)

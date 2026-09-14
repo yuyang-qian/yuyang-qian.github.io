@@ -8,7 +8,6 @@
     document.documentElement.classList.add('embedded');
     // Fit the card into the host page, including when previewing local HTML files.
     document.body.style.padding = '0';
-    card.style.width = '100%';
     const parentOrigin = window.location.protocol === 'file:' ? '*' : window.location.origin;
     document.querySelectorAll('a[href]:not([href^="#"])').forEach(link => {
       if (link.dataset.paperAnchor) {
