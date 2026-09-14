@@ -1,0 +1,33 @@
+/* GitHub selects theme-only anchors by href suffix and page color mode.
+   Keep these selectors aligned with the verified GitHub global stylesheet. */
+:root[data-color-mode="dark"] .readme [href$="#gh-light-mode-only"],
+:root[data-color-mode="light"] .readme [href$="#gh-dark-mode-only"] { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root[data-color-mode="auto"] .readme [href$="#gh-light-mode-only"] { display: none; }
+}
+@media (prefers-color-scheme: light) {
+  :root[data-color-mode="auto"] .readme [href$="#gh-dark-mode-only"] { display: none; }
+}
+:root { color-scheme: light; --bg: #fff; --text: #1f2328; --line: #d1d9e0; --link: #0969da; }
+:root[data-color-mode="dark"] { color-scheme: dark; --bg: #0d1117; --text: #f0f6fc; --line: #3d444d; --link: #4493f8; }
+@media (prefers-color-scheme: dark) {
+  :root[data-color-mode="auto"] { color-scheme: dark; --bg: #0d1117; --text: #f0f6fc; --line: #3d444d; --link: #4493f8; }
+}
+* { box-sizing: border-box; }
+body { margin: 24px; background: var(--bg); color: var(--text); font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+header { max-width: 1006px; margin: 0 auto 24px; }
+h1 { font-size: 20px; }
+select { margin-left: 8px; padding: 4px 8px; font: inherit; }
+a { color: var(--link); }
+.readme { max-width: 1006px; margin: auto; padding: 32px; border: 1px solid var(--line); border-radius: 6px; }
+.readme img { max-width: 100%; }
+.readme h1 { margin: 0 0 16px; padding-bottom: .3em; border-bottom: 1px solid var(--line); font-size: 2em; font-weight: 600; line-height: 1.25; }
+.readme p { margin: 0 0 16px; }
+.readme > :last-child { margin-bottom: 0; }
+.readme samp { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 85%; }
+/* GitHub's Markdown sanitizer removes small tags. */
+.readme small { font-size: inherit; }
+@media (max-width: 600px) {
+  body { margin: 12px; }
+  .readme { padding: 16px; }
+}

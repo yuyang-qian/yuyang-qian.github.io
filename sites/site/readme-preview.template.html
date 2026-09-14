@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN" data-color-mode="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>GitHub README 预览</title>
+  <link rel="stylesheet" href="site/readme-preview.css">
+</head>
+<body>
+  <header>
+    <h1>GitHub README 预览</h1>
+    <label>GitHub 主题
+      <select id="theme">
+        <option value="auto">跟随系统</option>
+        <option value="light">浅色</option>
+        <option value="dark">深色</option>
+      </select>
+    </label>
+    <p>静态 README，学校、项目和联系链接均可直接点击。另有 <a href="index.html">独立页面</a>。</p>
+  </header>
+  <article class="readme">
+{{README}}
+  </article>
+  <script>
+    document.querySelector('#theme').addEventListener('change', event => {
+      document.documentElement.dataset.colorMode = event.target.value;
+    });
+  </script>
+</body>
+</html>

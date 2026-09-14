@@ -1,0 +1,123 @@
+{
+  "name": "Yu-Yang Qian",
+  "handle": "ZinYY",
+  "homepage": "https://www.lamda.nju.edu.cn/qianyy/",
+  "tagline": "Efficiency & infrastructure of LLMs.",
+  "intro": "I'm interested in the efficiency and infrastructure of LLMs.",
+  "intro_highlights": [
+    "efficiency",
+    "infrastructure"
+  ],
+  "affiliations": [
+    {
+      "id": "nju",
+      "label": "PhD @ NJU (LAMDA)",
+      "url": "https://www.lamda.nju.edu.cn/CH.MainPage.ashx",
+      "logo": {
+        "src": "assets/logos/nju_transparent.png",
+        "remove_white": false,
+        "fit": "cover",
+        "canvas": [
+          24,
+          30
+        ],
+        "height": 28.5,
+        "dark_style": "original"
+      }
+    },
+    {
+      "id": "ucsd",
+      "label": "Visiting @ UCSD (Hao AI Lab)",
+      "url": "https://haoailab.com/",
+      "logo": {
+        "src": "assets/logos/ucsd.png",
+        "dark_src": "assets/logos/ucsd-white.png",
+        "canvas": [
+          90,
+          20
+        ],
+        "height": 16.8
+      }
+    }
+  ],
+  "links": [
+    {
+      "label": "Homepage",
+      "url": "https://www.lamda.nju.edu.cn/qianyy/"
+    },
+    {
+      "label": "Scholar",
+      "url": "https://scholar.google.com/citations?user=rFtaRxcAAAAJ"
+    },
+    {
+      "label": "Email",
+      "url": "mailto:qianyy@lamda.nju.edu.cn"
+    }
+  ],
+  "groups": [
+    {
+      "name": "Speculative Decoding",
+      "projects": [
+        {
+          "id": "onlinespec",
+          "name": "OnlineSPEC",
+          "url": "https://github.com/ZinYY/OnlineSPEC",
+          "description": "Speculative decoding meets online learning.",
+          "logo": "assets/logos/onlinespec.jpeg"
+        },
+        {
+          "id": "adaflash",
+          "name": "AdaFlash",
+          "url": "https://github.com/ZinYY/AdaFlash",
+          "description": "On-policy distilled diffusion drafters.",
+          "logo": "assets/logos/transparent/adaflash.png"
+        },
+        {
+          "id": "jetspec",
+          "name": "JetSpec",
+          "url": "https://github.com/hao-ai-lab/JetSpec",
+          "description": "Scaling speculative decoding with parallel tree drafting.",
+          "logo": "assets/logos/transparent/jetspec.png"
+        },
+        {
+          "id": "pd-survey",
+          "name": "PD Survey",
+          "url": "https://github.com/ZinYY/Awesome-Parallel-Decoding",
+          "description": "A systematic survey of parallel decoding.",
+          "logo": "assets/logos/pd_survey.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Diffusion LLMs",
+      "projects": [
+        {
+          "id": "d3llm",
+          "name": "d3LLM",
+          "url": "https://github.com/hao-ai-lab/d3LLM",
+          "description": "Ultra-fast diffusion LLMs via pseudo-trajectory distillation.",
+          "logo": "assets/logos/transparent/d3llm.png"
+        }
+      ]
+    },
+    {
+      "name": "RLHF & RSI",
+      "projects": [
+        {
+          "id": "online-rlhf",
+          "name": "OnlineRLHF",
+          "url": "https://github.com/ZinYY/Online_RLHF",
+          "description": "Online RLHF with one-pass reward modeling.",
+          "logo": null
+        },
+        {
+          "id": "counterfactual",
+          "name": "Counterfactual Distillation",
+          "url": "https://arxiv.org/abs/2603.16843",
+          "description": "Internalizing agency from reflective experience.",
+          "logo": null
+        }
+      ]
+    }
+  ]
+}

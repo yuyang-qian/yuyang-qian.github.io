@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="{{META_DESCRIPTION}}">
+  <title>{{NAME}} · ZinYY</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="style.css?v={{STYLE_VERSION}}">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#research">Skip to research</a>
+  <div class="profile-card" data-animation-speed="{{ANIMATION_SPEED}}" data-hover-animation-speed="{{HOVER_ANIMATION_SPEED}}">
+    <canvas id="wave-grid" aria-hidden="true"></canvas>
+    <button id="theme-toggle" type="button" aria-label="Theme: system. Switch to light theme." title="Theme: system">◐</button>
+    <main>
+      <section class="hero" aria-labelledby="intro-title">
+        <h1 id="intro-title">Hi, I'm {{NAME}}<span class="period">.</span></h1>
+        <div class="affiliations">
+          {{AFFILIATIONS}}
+        </div>
+        <p class="intro">{{INTRO}}</p>
+      </section>
+      <div class="research" id="research">
+        {{GROUPS}}
+      </div>
+    </main>
+    <footer>
+      {{CONTACT_LINKS}}
+    </footer>
+  </div>
+</body>
+</html>
