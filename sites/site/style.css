@@ -100,7 +100,7 @@ h2 { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.45; }
 .embedded .affiliations,
 .embedded .intro { margin-left: 24px; }
 @media (max-width: 800px) {
-  .embedded .profile-card { padding: 20.25px 24px 15.75px; }
+  .embedded .profile-card { padding: 20.25px 8px 15.75px; }
   .embedded .affiliations,
   .embedded .intro { margin-left: 0; }
 }
