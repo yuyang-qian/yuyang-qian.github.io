@@ -1,4 +1,4 @@
-"""Generate self-contained theme-aware logo SVGs from profile data."""
+"""Generate self-contained light logo SVGs from profile data."""
 
 import base64
 from html import escape
@@ -26,31 +26,16 @@ def white_removal():
 <feComposite in="SourceGraphic" in2="key" operator="in"/></filter></defs>'''
 
 
-def dark_ink(style):
-    if style == 'original':
-        return ''
-    if style == 'pastel':
-        operations = '<feComponentTransfer><feFuncR type="linear" slope="0.5" intercept="0.5"/><feFuncG type="linear" slope="0.5" intercept="0.5"/><feFuncB type="linear" slope="0.5" intercept="0.5"/></feComponentTransfer>'
-    else:
-        operations = '<feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.92  0 0 0 0 0.96  0 0 0 0 1  -2 -2 -2 0 1.3" result="lift"/><feComposite in="lift" in2="SourceAlpha" operator="in" result="ink"/><feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="ink"/></feMerge>'
-    return f'<defs><filter id="dark-ink" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">{operations}</filter></defs>'
-
-
-def logo_asset(item, theme):
+def logo_asset(item):
     logo = item['logo']
-    separate_dark = theme == 'dark' and 'dark_src' in logo
-    key = 'dark_src' if separate_dark else 'src'
-    source = logo[f'_{key}_path']
-    mime = logo[f'_{key}_mime']
+    source = logo['_src_path']
+    mime = logo['_src_mime']
     data = base64.b64encode(source.read_bytes()).decode()
     width, height = logo['canvas']
-    remove_white = mime == 'image/jpeg' if separate_dark else logo['remove_white']
-    cutout = white_removal() if remove_white else ''
+    cutout = white_removal() if logo['remove_white'] else ''
     cutout_effect = ' filter="url(#cutout)"' if cutout else ''
-    ink = dark_ink(logo['dark_style']) if theme == 'dark' and not separate_dark else ''
-    ink_effect = ' filter="url(#dark-ink)"' if ink else ''
     fit = 'slice' if logo['fit'] == 'cover' else 'meet'
-    body = f'{cutout}{ink}<g{ink_effect}><image x="1" y="1" width="{width-2}" height="{height-2}" preserveAspectRatio="xMidYMid {fit}" xlink:href="data:{mime};base64,{data}"{cutout_effect}/></g>'
+    body = f'{cutout}<g><image x="1" y="1" width="{width-2}" height="{height-2}" preserveAspectRatio="xMidYMid {fit}" xlink:href="data:{mime};base64,{data}"{cutout_effect}/></g>'
     return svg(width, height, item.get('name', item.get('label', item['id'])), body)
 
 
@@ -61,8 +46,7 @@ def build_assets(profile, destination):
     items.extend(project for group in profile['groups'] for project in group['projects'])
     for item in items:
         if item['logo'] is not None:
-            for theme in ('light', 'dark'):
-                files[f'assets/logos/themed/{item["id"]}-{theme}.svg'] = logo_asset(item, theme)
+            files[f'assets/logos/themed/{item["id"]}-light.svg'] = logo_asset(item)
     for name, contents in files.items():
         path = destination / name
         path.parent.mkdir(parents=True, exist_ok=True)

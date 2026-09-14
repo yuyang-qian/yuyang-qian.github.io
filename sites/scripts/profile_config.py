@@ -37,25 +37,19 @@ def logo_config(value, root, location):
     if not isinstance(value, dict):
         raise ValueError(f'{location}: expected an image path, logo object, or null')
     logo = dict(value)
-    for key in ('src', 'dark_src'):
-        if key == 'dark_src' and key not in logo:
-            continue
-        source = require_text(logo.get(key), f'{location}.{key}')
-        path = (root / source).resolve()
-        if not path.is_file():
-            raise ValueError(f'{location}.{key}: image does not exist: {source}')
-        mime = mimetypes.guess_type(path.name)[0]
-        if mime not in ('image/png', 'image/jpeg', 'image/webp', 'image/svg+xml'):
-            raise ValueError(f'{location}.{key}: use PNG, JPG, WebP, or SVG')
-        logo[f'_{key}_path'] = path
-        logo[f'_{key}_mime'] = mime
+    source = require_text(logo.get('src'), f'{location}.src')
+    path = (root / source).resolve()
+    if not path.is_file():
+        raise ValueError(f'{location}.src: image does not exist: {source}')
+    mime = mimetypes.guess_type(path.name)[0]
+    if mime not in ('image/png', 'image/jpeg', 'image/webp', 'image/svg+xml'):
+        raise ValueError(f'{location}.src: use PNG, JPG, WebP, or SVG')
+    logo['_src_path'] = path
+    logo['_src_mime'] = mime
     # JPGs conventionally contain white backing; transparent formats are kept.
     logo.setdefault('remove_white', logo['_src_mime'] == 'image/jpeg')
     if not isinstance(logo['remove_white'], bool):
         raise ValueError(f'{location}.remove_white: expected true or false')
-    logo.setdefault('dark_style', 'lift')
-    if logo['dark_style'] not in ('lift', 'pastel', 'original'):
-        raise ValueError(f'{location}.dark_style: choose lift, pastel, or original')
     logo.setdefault('fit', 'contain')
     if logo['fit'] not in ('contain', 'cover'):
         raise ValueError(f'{location}.fit: choose contain or cover')

@@ -51,8 +51,9 @@ class ProfileBuildTests(unittest.TestCase):
             self.assertIn('New &amp; Future', document)
             self.assertIn('new?a=1&amp;b=2', document)
             self.assertIn('Visitor @ New School', document)
-            self.assertIn('https://example.com/blog', document)
             self.assertNotIn('no-logo-light.svg', document)
+        self.assertIn('https://example.com/blog', readme)
+        self.assertNotIn('https://example.com/blog', page)
         self.assertIn('<a href="https://example.com/text">Text&nbsp;Only</a>', readme)
         self.assertIn('<a class="project" href="https://example.com/text"><span>Text&nbsp;Only</span></a>', page)
         self.assertIn('New&nbsp;&lt;Project&gt;', readme)
@@ -60,11 +61,10 @@ class ProfileBuildTests(unittest.TestCase):
         self.assertIn('height="21"', page)
         self.assertIn('height="21"', readme)
         for identifier in ('new-id-unrelated-to-filename', 'new-school'):
-            for theme in ('light', 'dark'):
-                asset = f'assets/logos/themed/{identifier}-{theme}.svg'
-                self.assertTrue((self.output / asset).is_file())
-                self.assertIn('id="cutout"', assets[asset])
-                self.assertIn('in="SourceGraphic" in2="key" operator="in"', assets[asset])
+            asset = f'assets/logos/themed/{identifier}-light.svg'
+            self.assertTrue((self.output / asset).is_file())
+            self.assertIn('id="cutout"', assets[asset])
+            self.assertIn('in="SourceGraphic" in2="key" operator="in"', assets[asset])
         self.assertFalse((self.output / 'assets/logos/themed/no-logo-light.svg').exists())
 
     def test_readme_is_static_and_site_is_animated_and_build_is_repeatable(self):
@@ -73,14 +73,20 @@ class ProfileBuildTests(unittest.TestCase):
         self.assertEqual(first, build(profile, self.output))
         document = (self.output / 'README.md').read_text()
         self.assertIn('<strong>efficiency</strong>', document)
-        self.assertIn('<strong>infrastructure</strong>', document)
+        self.assertIn('<strong>infra</strong>', document)
         self.assertNotIn('<canvas', document)
         self.assertNotIn('keyword-letter', document)
         site = (self.output / 'site/index.html').read_text()
         self.assertIn('<canvas id="wave-grid"', site)
         self.assertIn('class="keyword-letter"', site)
         self.assertIn('class="sr-only">efficiency</span>', site)
-        self.assertIn('class="sr-only">infrastructure</span>', site)
+        self.assertIn('class="sr-only">infra</span>', site)
+        self.assertIn('<h1 id="intro-title">', site)
+        self.assertNotIn('<footer', site)
+        self.assertNotIn('<button', site)
+        self.assertNotIn('<source', site)
+        self.assertIn('name="color-scheme" content="light"', site)
+        self.assertTrue(all(name.endswith('-light.svg') for name in first))
         self.assertIn('url=site/', (self.output / 'index.html').read_text())
         for name in ('style.css', 'main.js', 'assets/favicon.svg'):
             self.assertTrue((self.output / 'site' / name).is_file())
@@ -102,12 +108,11 @@ class ProfileBuildTests(unittest.TestCase):
         self.assertIn('Site-only name', (self.output / 'site/index.html').read_text())
         self.assertIn('Site-only affiliation', (self.output / 'site/assets/logos/themed/nju-light.svg').read_text())
 
-    def test_readme_links_are_direct_and_logo_themes_follow_github(self):
+    def test_readme_links_are_direct_and_logos_are_light(self):
         build(self.load(), self.output)
         readme = (self.output / 'README.md').read_text()
-        # GitHub hides anchors with these href suffixes using its page setting,
-        # including a manual setting opposite to the system's color scheme.
         self.assertNotIn('prefers-color-scheme', readme)
+        self.assertNotIn('#gh-', readme)
         self.assertNotIn('<details>', readme)
         self.assertNotIn('assets/readme/card-', readme)
         items = self.data['affiliations'] + self.data['links']
@@ -115,9 +120,7 @@ class ProfileBuildTests(unittest.TestCase):
         for item in items:
             self.assertIn(f'href="{item["url"]}"', readme)
             if item.get('logo'):
-                for theme in ('light', 'dark'):
-                    self.assertIn(f'href="{item["url"]}#gh-{theme}-mode-only"', readme)
-                    self.assertIn(f'src="assets/logos/themed/{item["id"]}-{theme}.svg"', readme)
+                self.assertIn(f'src="assets/logos/themed/{item["id"]}-light.svg"', readme)
 
     def test_errors_identify_the_configuration_field(self):
         cases = [

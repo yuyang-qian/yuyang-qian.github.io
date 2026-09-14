@@ -10,27 +10,20 @@ from pathlib import Path
 
 from profile_assets import build_assets
 from profile_config import load_profile
-from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def themed_picture(light, dark, alt='', height=None, width=None, site=False):
-    marker = ' data-theme-logo' if site else ''
-    size = (f' height="{height:g}" align="middle"' if height is not None else '') + (f' width="{width}"' if width else '')
-    return f'<picture{marker}><source media="(prefers-color-scheme: dark)" srcset="{dark}"><img src="{light}"{size} alt="{escape(alt, quote=True)}"></picture>'
-
-
-def logo_picture(item, site=False):
+def logo_picture(item):
     if item['logo'] is None:
         return ''
     name = item['id']
-    return themed_picture(f'assets/logos/themed/{name}-light.svg', f'assets/logos/themed/{name}-dark.svg', height=item['logo']['height'], site=site)
+    return f'<img src="assets/logos/themed/{name}-light.svg" height="{item["logo"]["height"]:g}" align="middle" alt="">'
 
 
-def contact_links(profile, site=False):
+def contact_links(profile):
     links = [f'<a href="{escape(item["url"], quote=True)}">{escape(item["label"])} ↗</a>' for item in profile['links']]
-    return ('\n      ' if site else ' &nbsp; / &nbsp; ').join(links)
+    return ' &nbsp; / &nbsp; '.join(links)
 
 
 def project_name(project):
@@ -41,24 +34,18 @@ def project_name(project):
 
 
 def affiliation_markup(item):
-    icon = logo_picture(item, site=True)
+    icon = logo_picture(item)
     link = f'<a href="{escape(item["url"], quote=True)}">{escape(item["label"])}</a>'
     logo = f'<span class="school-logo">{icon}</span>' if icon else ''
     return f'<span class="affiliation">{logo}<span class="affiliation-text">{link}</span></span>'
 
 
 def readme_logo(item, align='middle'):
-    """Only the small logos need explicit GitHub theme variants."""
+    """Keep the logo link identical to its accompanying text link."""
     if item['logo'] is None:
         return ''
-    variants = []
-    for theme in ('light', 'dark'):
-        asset = f'assets/logos/themed/{item["id"]}-{theme}.svg'
-        # Keep the normal text link exact. If a URL has a meaningful fragment,
-        # open the logo asset instead of overwriting that fragment on the icon.
-        target = asset if urlsplit(item['url']).fragment else item['url']
-        variants.append(f'<a href="{escape(target, quote=True)}#gh-{theme}-mode-only"><img src="{asset}" height="{item["logo"]["height"]:g}" align="{align}" alt="{escape(item.get("name", item.get("label", "")), quote=True)} logo"></a>')
-    return ''.join(variants)
+    asset = f'assets/logos/themed/{item["id"]}-light.svg'
+    return f'<a href="{escape(item["url"], quote=True)}"><img src="{asset}" height="{item["logo"]["height"]:g}" align="{align}" alt="{escape(item.get("name", item.get("label", "")), quote=True)} logo"></a>'
 
 
 def readme(profile):
@@ -121,7 +108,7 @@ def page(profile):
             continue
         projects = []
         for project_index, project in enumerate(group['projects']):
-            icon = logo_picture(project, site=True)
+            icon = logo_picture(project)
             logo = f'<span class="project-logo">{icon}</span>' if icon else ''
             title = f' title="{escape(project["description"], quote=True)}"' if project.get('description') else ''
             label = f' aria-label="{escape(project["name"], quote=True)}"' if project.get('name_lines') else ''
@@ -137,12 +124,12 @@ def page(profile):
         'NAME': escape(profile['name']),
         'META_DESCRIPTION': escape(profile['name'] + ' · ' + profile['tagline'], quote=True),
         'STYLE_VERSION': hashlib.sha256((ROOT / 'site' / 'style.css').read_bytes()).hexdigest()[:12],
+        'SCRIPT_VERSION': hashlib.sha256((ROOT / 'site' / 'main.js').read_bytes()).hexdigest()[:12],
         'ANIMATION_SPEED': '9',
         'HOVER_ANIMATION_SPEED': '3',
         'INTRO': animated_intro(profile),
         'AFFILIATIONS': '<span class="affiliation-separator" aria-hidden="true">/</span>'.join(affiliation_markup(item) for item in profile['affiliations']),
         'GROUPS': '\n'.join(groups),
-        'CONTACT_LINKS': contact_links(profile, site=True),
     }
     # One substitution pass prevents user text containing {{...}} from becoming
     # another template instruction.

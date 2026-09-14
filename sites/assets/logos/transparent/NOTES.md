@@ -6,13 +6,13 @@ Final PNG files: `adaflash.png`, `jetspec.png`, and `d3llm.png`.
 
 OnlineSPEC's SVG assets in `../themed/` embed the untouched original JPEG and use an SVG color-matrix filter to make near-white pixels transparent. This preserves the original lettering and emblem geometry. No generated checkerboard is used.
 
-NJU now uses the user-supplied `../nju_transparent.png` directly, with `remove_white: false` and `dark_style: original`. Its existing alpha, white shield, and purple artwork are retained. `fit: cover` only clips excess transparent side margins in the SVG display viewport; the PNG itself is unchanged.
+NJU now uses the user-supplied `../nju_transparent.png` directly, with `remove_white: false`. Its existing alpha, white shield, and purple artwork are retained. `fit: cover` only clips excess transparent side margins in the SVG display viewport; the PNG itself is unchanged.
 
 The white-removal filter clips its output to the original `SourceAlpha`. This keeps transparent letterboxing above and below the image transparent instead of turning it into black bars.
 
-PD Survey uses the same SVG white-removal filter on the user-supplied `../pd_survey.jpg`, preserving its original black/gold lettering. The original UC San Diego PNGs already have alpha channels, so they do not need extraction. Projects without supplied logos have no fallback icon.
+PD Survey uses the same SVG white-removal filter on the user-supplied `../pd_survey.jpg`, preserving its original black/gold lettering. The original UC San Diego PNG already has an alpha channel, so it does not need extraction. Projects without supplied logos have no fallback icon.
 
-The profile builder creates light/dark SVG variants for every logo configured in `profile.json`, in `../themed/`. The dark version lifts black/navy paper-logo lettering toward white while retaining the bright blue/gold accents. NJU keeps its original colors, and UC San Diego uses its supplied white wordmark. The changes are clipped to the logo alpha channel, preserving transparent negative space. Neither version adds a rectangular backdrop.
+The profile builder creates one light SVG for every logo configured in `profile.json`, in `../themed/`. Logos keep their original colors and transparent negative space. No rectangular backdrop is added.
 
 ## Prompt used for each original logo
 

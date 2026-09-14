@@ -2,11 +2,11 @@
   "name": "Yu-Yang Qian",
   "handle": "ZinYY",
   "homepage": "https://www.lamda.nju.edu.cn/qianyy/",
-  "tagline": "Efficiency & infrastructure of LLMs.",
-  "intro": "I'm interested in the efficiency and infrastructure of LLMs.",
+  "tagline": "Efficiency & infra of LLMs.",
+  "intro": "I'm interested in the efficiency and infra of LLMs.",
   "intro_highlights": [
     "efficiency",
-    "infrastructure"
+    "infra"
   ],
   "affiliations": [
     {
@@ -21,8 +21,7 @@
           24,
           30
         ],
-        "height": 28.5,
-        "dark_style": "original"
+        "height": 28.5
       }
     },
     {
@@ -31,12 +30,11 @@
       "url": "https://haoailab.com/",
       "logo": {
         "src": "assets/logos/ucsd.png",
-        "dark_src": "assets/logos/ucsd-white.png",
         "canvas": [
           90,
           20
         ],
-        "height": 16.8
+        "height": 20.16
       }
     }
   ],

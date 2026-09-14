@@ -1,33 +1,29 @@
 /* The standalone page can respond to a pointer; GitHub README images cannot. */
 (() => {
-  const root = document.documentElement;
-  const systemTheme = matchMedia('(prefers-color-scheme: dark)');
-  const themeButton = document.querySelector('#theme-toggle');
   const ANIMATION_SPEED = Number(document.querySelector('.profile-card').dataset.animationSpeed) || 9;
   const HOVER_ANIMATION_SPEED = Number(document.querySelector('.profile-card').dataset.hoverAnimationSpeed) || 3;
-  const themes = ['system', 'light', 'dark'];
-  let theme = 'system';
-  try { const saved = localStorage.getItem('zinyy-theme'); if (themes.includes(saved)) theme = saved; } catch { /* Private or local-file browsing. */ }
-  let dark = false;
   const canvas = document.querySelector('#wave-grid');
   const card = document.querySelector('.profile-card');
+  if (new URLSearchParams(window.location.search).get('embed') === '1' && window.parent !== window) {
+    document.documentElement.classList.add('embedded');
+    // Fit the card into the host page, including when previewing local HTML files.
+    document.body.style.padding = '0';
+    card.style.width = '100%';
+    document.querySelectorAll('a[href]:not([href^="#"])').forEach(link => {
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+    });
+    const parentOrigin = window.location.protocol === 'file:' ? '*' : window.location.origin;
+    const reportHeight = () => window.parent.postMessage({
+      type: 'research-profile-height',
+      height: Math.ceil(card.getBoundingClientRect().height)
+    }, parentOrigin);
+    new ResizeObserver(reportHeight).observe(card);
+    reportHeight();
+  }
   const ctx = canvas.getContext('2d');
   let width = 0, height = 0, frame = 0, lastTime = 0, time = 0;
   const pointer = { x: -1000, y: -1000, targetX: -1000, targetY: -1000, strength: 0, active: false };
-
-  function applyTheme() {
-    if (theme === 'system') delete root.dataset.theme;
-    else root.dataset.theme = theme;
-    dark = theme === 'dark' || (theme === 'system' && systemTheme.matches);
-    document.querySelectorAll('picture[data-theme-logo] source').forEach(source => {
-      source.media = dark ? 'all' : 'not all';
-    });
-    themeButton.textContent = { system: '◐', light: '☼', dark: '☾' }[theme];
-    const next = themes[(themes.indexOf(theme) + 1) % themes.length];
-    themeButton.setAttribute('aria-label', `Theme: ${theme}. Switch to ${next} theme.`);
-    themeButton.title = `Theme: ${theme}`;
-    draw();
-  }
 
   function draw() {
     if (!ctx || !width) return;
@@ -42,8 +38,8 @@
         const distance = Math.hypot(x + cell / 2 - pointer.x, y + cell / 2 - pointer.y);
         const glow = Math.exp(-(distance ** 2) / 27000) * pointer.strength;
         const ripple = (.5 + .5 * Math.cos(distance * .037 - time * 1.6)) * glow;
-        const alpha = (dark ? .018 : .035) + crest * right * top * (dark ? .28 : .30) + ripple * (dark ? .2 : .20);
-        ctx.fillStyle = dark ? `rgba(46,119,221,${alpha})` : `rgba(23,85,174,${alpha})`;
+        const alpha = (.035 + crest * right * top * .30 + ripple * .20) * .60;
+        ctx.fillStyle = `rgba(23,85,174,${alpha})`;
         ctx.fillRect(x + 1, y + 1, cell - 3, cell - 3);
       }
     }
@@ -85,12 +81,6 @@
     else draw();
   }
 
-  themeButton.addEventListener('click', () => {
-    theme = themes[(themes.indexOf(theme) + 1) % themes.length];
-    try { localStorage.setItem('zinyy-theme', theme); } catch { /* Keep working without storage. */ }
-    applyTheme();
-  });
-  systemTheme.addEventListener('change', applyTheme);
   document.addEventListener('visibilitychange', syncMotion);
   window.addEventListener('resize', resize, { passive: true });
   new ResizeObserver(resize).observe(card);
@@ -108,7 +98,6 @@
   card.addEventListener('pointermove', trackPointer, { passive: true });
   card.addEventListener('pointerleave', () => { pointer.active = false; });
   window.addEventListener('blur', () => { pointer.active = false; });
-  applyTheme();
   resize();
   syncMotion();
 })();

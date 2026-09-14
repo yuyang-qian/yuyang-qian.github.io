@@ -3,34 +3,33 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light dark">
-  <meta name="description" content="Yu-Yang Qian · Efficiency &amp; infrastructure of LLMs.">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Yu-Yang Qian · Efficiency &amp; infra of LLMs.">
   <title>Yu-Yang Qian · ZinYY</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="stylesheet" href="style.css?v=072fc0a68bf5">
-  <script src="main.js" defer></script>
+  <link rel="stylesheet" href="style.css?v=aabe10cb893b">
+  <script src="main.js?v=013d9b6b0289" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#research">Skip to research</a>
   <div class="profile-card" data-animation-speed="9" data-hover-animation-speed="3">
     <canvas id="wave-grid" aria-hidden="true"></canvas>
-    <button id="theme-toggle" type="button" aria-label="Theme: system. Switch to light theme." title="Theme: system">◐</button>
     <main>
       <section class="hero" aria-labelledby="intro-title">
-        <h1 id="intro-title">Hi, I'm Yu-Yang Qian<span class="period">.</span></h1>
+        <h1 id="intro-title">Hi, I'm Yu-Yang Qian.</h1>
         <div class="affiliations">
-          <span class="affiliation"><span class="school-logo"><picture data-theme-logo><source media="(prefers-color-scheme: dark)" srcset="assets/logos/themed/nju-dark.svg"><img src="assets/logos/themed/nju-light.svg" height="28.5" align="middle" alt=""></picture></span><span class="affiliation-text"><a href="https://www.lamda.nju.edu.cn/CH.MainPage.ashx">PhD @ NJU (LAMDA)</a></span></span><span class="affiliation-separator" aria-hidden="true">/</span><span class="affiliation"><span class="school-logo"><picture data-theme-logo><source media="(prefers-color-scheme: dark)" srcset="assets/logos/themed/ucsd-dark.svg"><img src="assets/logos/themed/ucsd-light.svg" height="16.8" align="middle" alt=""></picture></span><span class="affiliation-text"><a href="https://haoailab.com/">Visiting @ UCSD (Hao AI Lab)</a></span></span>
+          <span class="affiliation"><span class="school-logo"><img src="assets/logos/themed/nju-light.svg" height="28.5" align="middle" alt=""></span><span class="affiliation-text"><a href="https://www.lamda.nju.edu.cn/CH.MainPage.ashx">PhD @ NJU (LAMDA)</a></span></span><span class="affiliation-separator" aria-hidden="true">/</span><span class="affiliation"><span class="school-logo"><img src="assets/logos/themed/ucsd-light.svg" height="20.16" align="middle" alt=""></span><span class="affiliation-text"><a href="https://haoailab.com/">Visiting @ UCSD (Hao AI Lab)</a></span></span>
         </div>
-        <p class="intro">I&#x27;m interested in the <em><span class="sr-only">efficiency</span><span class="keyword-letters" aria-hidden="true"><span class="keyword-letter" style="--letter-index:0">e</span><span class="keyword-letter" style="--letter-index:1">f</span><span class="keyword-letter" style="--letter-index:2">f</span><span class="keyword-letter" style="--letter-index:3">i</span><span class="keyword-letter" style="--letter-index:4">c</span><span class="keyword-letter" style="--letter-index:5">i</span><span class="keyword-letter" style="--letter-index:6">e</span><span class="keyword-letter" style="--letter-index:7">n</span><span class="keyword-letter" style="--letter-index:8">c</span><span class="keyword-letter" style="--letter-index:9">y</span></span></em> and <em><span class="sr-only">infrastructure</span><span class="keyword-letters" aria-hidden="true"><span class="keyword-letter" style="--letter-index:0">i</span><span class="keyword-letter" style="--letter-index:1">n</span><span class="keyword-letter" style="--letter-index:2">f</span><span class="keyword-letter" style="--letter-index:3">r</span><span class="keyword-letter" style="--letter-index:4">a</span><span class="keyword-letter" style="--letter-index:5">s</span><span class="keyword-letter" style="--letter-index:6">t</span><span class="keyword-letter" style="--letter-index:7">r</span><span class="keyword-letter" style="--letter-index:8">u</span><span class="keyword-letter" style="--letter-index:9">c</span><span class="keyword-letter" style="--letter-index:10">t</span><span class="keyword-letter" style="--letter-index:11">u</span><span class="keyword-letter" style="--letter-index:12">r</span><span class="keyword-letter" style="--letter-index:13">e</span></span></em> of LLMs.</p>
+        <p class="intro">I&#x27;m interested in the <em><span class="sr-only">efficiency</span><span class="keyword-letters" aria-hidden="true"><span class="keyword-letter" style="--letter-index:0">e</span><span class="keyword-letter" style="--letter-index:1">f</span><span class="keyword-letter" style="--letter-index:2">f</span><span class="keyword-letter" style="--letter-index:3">i</span><span class="keyword-letter" style="--letter-index:4">c</span><span class="keyword-letter" style="--letter-index:5">i</span><span class="keyword-letter" style="--letter-index:6">e</span><span class="keyword-letter" style="--letter-index:7">n</span><span class="keyword-letter" style="--letter-index:8">c</span><span class="keyword-letter" style="--letter-index:9">y</span></span></em> and <em><span class="sr-only">infra</span><span class="keyword-letters" aria-hidden="true"><span class="keyword-letter" style="--letter-index:0">i</span><span class="keyword-letter" style="--letter-index:1">n</span><span class="keyword-letter" style="--letter-index:2">f</span><span class="keyword-letter" style="--letter-index:3">r</span><span class="keyword-letter" style="--letter-index:4">a</span></span></em> of LLMs.</p>
       </section>
       <div class="research" id="research">
         <section class="research-group" aria-labelledby="group-1">
           <h2 id="group-1"><span class="group-bullet" aria-hidden="true">·</span>Speculative Decoding</h2>
-          <div class="projects"><span class="project-entry"><a class="project" href="https://github.com/ZinYY/OnlineSPEC" title="Speculative decoding meets online learning."><span>OnlineSPEC</span><span class="project-logo"><picture data-theme-logo><source media="(prefers-color-scheme: dark)" srcset="assets/logos/themed/onlinespec-dark.svg"><img src="assets/logos/themed/onlinespec-light.svg" height="18" align="middle" alt=""></picture></span></a><span class="project-separator" aria-hidden="true">·</span></span><span class="project-entry"><a class="project" href="https://github.com/ZinYY/AdaFlash" title="On-policy distilled diffusion drafters."><span>AdaFlash</span><span class="project-logo"><picture data-theme-logo><source media="(prefers-color-scheme: dark)" srcset="assets/logos/themed/adaflash-dark.svg"><img src="assets/logos/themed/adaflash-light.svg" height="18" align="middle" alt=""></picture></span></a><span class="project-separator" aria-hidden="true">·</span></span><span class="project-entry"><a class="project" href="https://github.com/hao-ai-lab/JetSpec" title="Scaling speculative decoding with parallel tree drafting."><span>JetSpec</span><span class="project-logo"><picture data-theme-logo><source media="(prefers-color-scheme: dark)" srcset="assets/logos/themed/jetspec-dark.svg"><img src="assets/logos/themed/jetspec-light.svg" height="18" align="middle" alt=""></picture></span></a><span class="project-separator" aria-hidden="true">·</span></span><span class="project-entry"><a class="project" href="https://github.com/ZinYY/Awesome-Parallel-Decoding" title="A systematic survey of parallel decoding."><span>PD&nbsp;Survey</span><span class="project-logo"><picture data-theme-logo><source media="(prefers-color-scheme: dark)" srcset="assets/logos/themed/pd-survey-dark.svg"><img src="assets/logos/themed/pd-survey-light.svg" height="18" align="middle" alt=""></picture></span></a></span></div>
+          <div class="projects"><span class="project-entry"><a class="project" href="https://github.com/ZinYY/OnlineSPEC" title="Speculative decoding meets online learning."><span>OnlineSPEC</span><span class="project-logo"><img src="assets/logos/themed/onlinespec-light.svg" height="18" align="middle" alt=""></span></a><span class="project-separator" aria-hidden="true">·</span></span><span class="project-entry"><a class="project" href="https://github.com/ZinYY/AdaFlash" title="On-policy distilled diffusion drafters."><span>AdaFlash</span><span class="project-logo"><img src="assets/logos/themed/adaflash-light.svg" height="18" align="middle" alt=""></span></a><span class="project-separator" aria-hidden="true">·</span></span><span class="project-entry"><a class="project" href="https://github.com/hao-ai-lab/JetSpec" title="Scaling speculative decoding with parallel tree drafting."><span>JetSpec</span><span class="project-logo"><img src="assets/logos/themed/jetspec-light.svg" height="18" align="middle" alt=""></span></a><span class="project-separator" aria-hidden="true">·</span></span><span class="project-entry"><a class="project" href="https://github.com/ZinYY/Awesome-Parallel-Decoding" title="A systematic survey of parallel decoding."><span>PD&nbsp;Survey</span><span class="project-logo"><img src="assets/logos/themed/pd-survey-light.svg" height="18" align="middle" alt=""></span></a></span></div>
         </section>
 <section class="research-group" aria-labelledby="group-2">
           <h2 id="group-2"><span class="group-bullet" aria-hidden="true">·</span>Diffusion LLMs</h2>
-          <div class="projects"><span class="project-entry"><a class="project" href="https://github.com/hao-ai-lab/d3LLM" title="Ultra-fast diffusion LLMs via pseudo-trajectory distillation."><span>d3LLM</span><span class="project-logo"><picture data-theme-logo><source media="(prefers-color-scheme: dark)" srcset="assets/logos/themed/d3llm-dark.svg"><img src="assets/logos/themed/d3llm-light.svg" height="18" align="middle" alt=""></picture></span></a></span></div>
+          <div class="projects"><span class="project-entry"><a class="project" href="https://github.com/hao-ai-lab/d3LLM" title="Ultra-fast diffusion LLMs via pseudo-trajectory distillation."><span>d3LLM</span><span class="project-logo"><img src="assets/logos/themed/d3llm-light.svg" height="18" align="middle" alt=""></span></a></span></div>
         </section>
 <section class="research-group" aria-labelledby="group-3">
           <h2 id="group-3"><span class="group-bullet" aria-hidden="true">·</span>RLHF &amp; RSI</h2>
@@ -38,11 +37,6 @@
         </section>
       </div>
     </main>
-    <footer>
-      <a href="https://www.lamda.nju.edu.cn/qianyy/">Homepage ↗</a>
-      <a href="https://scholar.google.com/citations?user=rFtaRxcAAAAJ">Scholar ↗</a>
-      <a href="mailto:qianyy@lamda.nju.edu.cn">Email ↗</a>
-    </footer>
   </div>
 </body>
 </html>
