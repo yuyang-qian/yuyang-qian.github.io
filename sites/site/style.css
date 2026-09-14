@@ -62,8 +62,17 @@ h2 { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.45; }
 .project-logo { display: inline-flex; align-items: center; }
 .project-logo img { display: block; width: auto; object-fit: contain; background: transparent; }
 @media (max-width: 800px) {
-  .research-row { grid-template-columns: 1fr; gap: 4.5px; }
-  .projects { column-gap: 8px; padding-left: 32px; }
+  .research { padding-left: 16px; }
+  .research-row {
+    display: block;
+    padding-left: 24px;
+    text-indent: -24px;
+    line-height: 1.7;
+  }
+  .research-row h2 { display: inline; margin-right: 4px; white-space: nowrap; }
+  .projects { display: inline; padding-left: 0; }
+  .project-entry { margin-right: 8px; text-indent: 0; vertical-align: baseline; }
+  .project-entry:last-child { margin-right: 0; }
 }
 @media (max-width: 700px) {
   .affiliations {
@@ -90,6 +99,11 @@ h2 { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.45; }
 }
 .embedded .affiliations,
 .embedded .intro { margin-left: 24px; }
+@media (max-width: 800px) {
+  .embedded .profile-card { padding: 20.25px 24px 15.75px; }
+  .embedded .affiliations,
+  .embedded .intro { margin-left: 0; }
+}
 @media (max-width: 700px) {
   .embedded { --page-gutter: 10px; --card-inset: 6px; }
 }
