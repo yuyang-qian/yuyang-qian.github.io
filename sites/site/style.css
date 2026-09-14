@@ -106,7 +106,8 @@ h2 { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.45; }
 @media (max-width: 800px) {
   .embedded { --card-padding: 8px; }
   .embedded .profile-card { padding: 20.25px var(--card-padding) 15.75px; }
-  .embedded .affiliations { margin-left: 0; }
+  .embedded h1 { margin-left: 4px; }
+  .embedded .affiliations,
   .embedded .intro {
     margin-left: calc(var(--page-gutter) + 24px - var(--card-inset) - 1px - var(--card-padding));
   }
