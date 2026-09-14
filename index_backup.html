@@ -61,7 +61,7 @@
 
         /* ===== Item background cards: always ===== */
         ul.zebra-list li {
-            background-color: #f4f6f9;
+            background-color: #f6f7fa;
             padding: 8px 10px 8px 8px;
             border-radius: 5px;
         }
@@ -71,8 +71,13 @@
         }
 
         li[id^="paper-"]:target {
-            outline: 2px solid #d8e2f0;
-            outline-offset: 4px;
+            outline: none;
+            animation: paper-arrival 1.6s ease-in-out;
+        }
+
+        @keyframes paper-arrival {
+            0%, 100% { background-color: #f6f7fa; }
+            50% { background-color: #d4e0f0; }
         }
 
         /* ===== Paper Logo Badge ===== */
@@ -334,6 +339,43 @@
         <script>
         (function () {
             var frame = document.getElementById('research-profile');
+            var scrollRequest = 0;
+
+            function scrollToPaper(paper, anchor) {
+                cancelAnimationFrame(scrollRequest);
+                paper.scrollIntoView({
+                    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+                    block: 'start'
+                });
+                var previousY = window.scrollY;
+                var stableFrames = 0;
+
+                function onScrollFrame() {
+                    var currentY = window.scrollY;
+                    stableFrames = Math.abs(currentY - previousY) < 0.5 ? stableFrames + 1 : 0;
+                    previousY = currentY;
+                    if (stableFrames < 4) {
+                        scrollRequest = requestAnimationFrame(onScrollFrame);
+                        return;
+                    }
+                    scrollRequest = 0;
+                    var targetY = Math.max(0, Math.min(
+                        currentY + paper.getBoundingClientRect().top - parseFloat(getComputedStyle(paper).scrollMarginTop),
+                        document.documentElement.scrollHeight - window.innerHeight
+                    ));
+                    // A user-interrupted scroll should not jump to the paper afterward.
+                    if (Math.abs(currentY - targetY) > 2) return;
+
+                    // Update the fragment only after arrival, so it cannot cause an instant jump.
+                    window.location.hash = anchor;
+                    paper.focus({ preventScroll: true });
+                    paper.style.animation = 'none';
+                    void paper.offsetWidth;
+                    paper.style.removeProperty('animation');
+                }
+                scrollRequest = requestAnimationFrame(onScrollFrame);
+            }
+
             window.addEventListener('message', function (event) {
                 if (event.source !== frame.contentWindow || !event.data) return;
                 if (event.data.type === 'research-profile-navigate') {
@@ -341,9 +383,7 @@
                     if (typeof anchor !== 'string' || !/^paper-[a-z0-9_-]+$/.test(anchor)) return;
                     var paper = document.getElementById(anchor);
                     if (paper) {
-                        window.location.hash = anchor;
-                        paper.scrollIntoView({ block: 'start' });
-                        paper.focus({ preventScroll: true });
+                        scrollToPaper(paper, anchor);
                     }
                     return;
                 }
