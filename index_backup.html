@@ -40,7 +40,7 @@
             --page-gutter: 16px;
             width: 100%;
             max-width: 1050px;
-            min-width: 520px;   /* 桌面端防止窗口拖得过窄 */
+            min-width: 520px;   /* 保留宽度下限，窄屏也不再继续压缩页面 */
             box-sizing: border-box;
         }
 
@@ -126,7 +126,6 @@
         @media screen and (max-width: 700px) {
             #layout-content {
                 --page-gutter: 10px;
-                min-width: 0;
                 padding-left: 10px;
                 padding-right: 10px;
             }
