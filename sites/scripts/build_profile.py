@@ -121,7 +121,7 @@ def page(profile):
             projects.append(f'<span class="project-entry"><a class="project" href="{escape(href, quote=True)}"{navigation}{title}{label}><span>{project_name(project)}</span>{logo}</a>{separator}</span>')
         groups.append(f'''<li class="research-group">
           <div class="research-row">
-            <h2 id="group-{i}">{escape(group['name'])}</h2>
+            <h2 id="group-{i}">{escape(group['name'])}:</h2>
             <div class="projects">{''.join(projects)}</div>
           </div>
         </li>''')

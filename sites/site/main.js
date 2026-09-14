@@ -56,6 +56,14 @@
   }
 
   function resize() {
+    // Share the longest label's actual width, leaving one space before the papers.
+    let categoryWidth = 0;
+    card.querySelectorAll('.research-row h2').forEach(heading => {
+      const range = document.createRange();
+      range.selectNodeContents(heading);
+      categoryWidth = Math.max(categoryWidth, range.getBoundingClientRect().width);
+    });
+    card.style.setProperty('--category-width', `${categoryWidth}px`);
     width = card.clientWidth;
     height = card.clientHeight;
     const ratio = Math.min(devicePixelRatio || 1, 2);
@@ -93,6 +101,7 @@
 
   document.addEventListener('visibilitychange', syncMotion);
   window.addEventListener('resize', resize, { passive: true });
+  document.fonts.ready.then(resize);
   new ResizeObserver(resize).observe(card);
   function trackPointer(event) {
     if (event.pointerType === 'touch') return;

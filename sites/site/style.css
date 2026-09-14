@@ -52,7 +52,7 @@ h1 { margin: 0; color: var(--heading); font-size: 20px; font-weight: 600; line-h
 .research { margin: 0; padding: 0 0 0 40px; list-style: square outside; }
 .research-group { padding-left: 8px; }
 .research-group + .research-group { margin-top: 7.5px; }
-.research-row { display: grid; grid-template-columns: 224px minmax(0, 1fr); align-items: baseline; gap: 6px; }
+.research-row { display: grid; grid-template-columns: var(--category-width, max-content) minmax(0, 1fr); align-items: baseline; gap: 4px; }
 h2 { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.45; }
 .projects { display: flex; flex-wrap: wrap; align-items: center; column-gap: 8px; row-gap: 6px; }
 .project-entry { display: inline-flex; align-items: center; gap: 4px; min-width: 0; max-width: 100%; }
@@ -92,17 +92,27 @@ h2 { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.45; }
 
 /* Match index_backup.html's heading, paragraph, and list text columns.
    The iframe spans the host gutters, keeping the 700px breakpoints aligned. */
-.embedded { --page-gutter: 16px; --card-inset: 0px; }
+.embedded {
+  --page-gutter: 16px;
+  --card-inset: 0px;
+  --card-padding: calc(var(--page-gutter) - var(--card-inset) - 1px);
+}
 .embedded .profile-card {
   width: calc(100% - 2 * var(--card-inset));
-  padding-inline: calc(var(--page-gutter) - var(--card-inset) - 1px);
+  padding-inline: var(--card-padding);
 }
 .embedded .affiliations,
 .embedded .intro { margin-left: 24px; }
 @media (max-width: 800px) {
-  .embedded .profile-card { padding: 20.25px 8px 15.75px; }
-  .embedded .affiliations,
-  .embedded .intro { margin-left: 0; }
+  .embedded { --card-padding: 8px; }
+  .embedded .profile-card { padding: 20.25px var(--card-padding) 15.75px; }
+  .embedded .affiliations { margin-left: 0; }
+  .embedded .intro {
+    margin-left: calc(var(--page-gutter) + 24px - var(--card-inset) - 1px - var(--card-padding));
+  }
+  .embedded .research {
+    padding-left: calc(var(--page-gutter) + 40px - var(--card-inset) - 1px - var(--card-padding));
+  }
 }
 @media (max-width: 700px) {
   .embedded { --page-gutter: 10px; --card-inset: 6px; }
