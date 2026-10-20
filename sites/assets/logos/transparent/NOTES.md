@@ -10,7 +10,7 @@ NJU now uses the user-supplied `../nju_transparent.png` directly, with `remove_w
 
 The white-removal filter clips its output to the original `SourceAlpha`. This keeps transparent letterboxing above and below the image transparent instead of turning it into black bars.
 
-PD Survey uses the same SVG white-removal filter on the user-supplied `../pd_survey.jpg`, preserving its original black/gold lettering. The original UC San Diego PNG already has an alpha channel, so it does not need extraction. Projects without supplied logos have no fallback icon.
+PD Survey uses the same SVG white-removal filter on the homepage's `../../../../logos/Parallel Decoding Survey Logo Short LQ.jpg`, preserving its original black/gold lettering. JetSpec++ uses `../../../../logos/jetspec_pp_logo_LQ.jpg` with the same filter. The original UC San Diego PNG already has an alpha channel, so it does not need extraction. Projects without supplied logos have no fallback icon.
 
 The profile builder creates one light SVG for every logo configured in `profile.json`, in `../themed/`. Logos keep their original colors and transparent negative space. No rectangular backdrop is added.
 

@@ -81,11 +81,23 @@
           "logo": "assets/logos/transparent/jetspec.png"
         },
         {
+          "id": "jetspec-pp",
+          "paper_anchor": "paper-jetspec-pp",
+          "name": "JetSpec++",
+          "url": "https://github.com/hao-ai-lab/JetSpec/tree/feat/jetspec-plus-plus-engine",
+          "description": "Foresight parallel drafting with self refinements.",
+          "logo": "../logos/jetspec_pp_logo_LQ.jpg"
+        },
+        {
           "id": "pd-survey",
+          "paper_anchor": "paper-pd-survey",
           "name": "PD Survey",
           "url": "https://github.com/ZinYY/Awesome-Parallel-Decoding",
           "description": "A systematic survey of parallel decoding.",
-          "logo": "assets/logos/pd_survey.jpg"
+          "logo": {
+            "src": "../logos/Parallel Decoding Survey Logo Short LQ.jpg",
+            "canvas": [88, 24]
+          }
         }
       ]
     },
@@ -110,7 +122,7 @@
       ]
     },
     {
-      "name": "RLHF & RSI",
+      "name": "Efficient Post-Training",
       "projects": [
         {
           "id": "online-rlhf",
