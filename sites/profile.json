@@ -115,8 +115,7 @@
         {
           "id": "d3llm-v2",
           "name": "d3LLM-v2",
-          "url": "https://www.lamda.nju.edu.cn/qianyy/bib/to-appear.html",
-          "paper_page": "bib/to-appear.html",
+          "url": "https://github.com/hao-ai-lab/d3LLM-v2",
           "logo": "assets/logos/d3LLM-v2.jpg"
         }
       ]
