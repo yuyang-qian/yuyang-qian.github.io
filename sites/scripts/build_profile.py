@@ -114,7 +114,7 @@ def page(profile):
             anchor = project.get('paper_anchor')
             href = f'../../{project["paper_page"]}' if project.get('paper_page') else project['url']
             if anchor:
-                href = f'../../index_backup.html#{anchor}'
+                href = f'../../#{anchor}'
             navigation = f' data-paper-anchor="{anchor}" target="_parent"' if anchor else ''
             # Keep each separator with the preceding project when the list wraps.
             separator = '<span class="project-separator" aria-hidden="true">·</span>' if project_index < len(group['projects']) - 1 else ''

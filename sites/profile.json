@@ -114,6 +114,7 @@
         },
         {
           "id": "d3llm-v2",
+          "paper_anchor": "paper-d3llm-v2",
           "name": "d3LLM-v2",
           "url": "https://github.com/hao-ai-lab/d3LLM-v2",
           "logo": "assets/logos/d3LLM-v2.jpg"

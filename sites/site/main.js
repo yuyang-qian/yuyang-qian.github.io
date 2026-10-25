@@ -11,6 +11,14 @@
     const parentOrigin = window.location.protocol === 'file:' ? '*' : window.location.origin;
     document.querySelectorAll('a[href]:not([href^="#"])').forEach(link => {
       if (link.dataset.paperAnchor) {
+        try {
+          // Native clicks and new tabs should use the actual host page, whatever its filename.
+          const paperUrl = new URL(window.parent.location.href);
+          paperUrl.hash = link.dataset.paperAnchor;
+          link.href = paperUrl.href;
+        } catch (_) {
+          // Keep the homepage-directory fallback when the parent URL is inaccessible.
+        }
         link.addEventListener('click', event => {
           if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
           event.preventDefault();
